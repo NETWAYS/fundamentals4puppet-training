@@ -135,10 +135,10 @@ setup.
       Boolean                  $ssl    = false,
     ) {
       ...
-      if $::osfamily {
+      case $::osfamily {
         'RedHat': {
           package {'mod_ssl':
-            ensure => $::ssl ? {
+            ensure => $ssl ? {
               true    => installed,
               default => absent,
             }
