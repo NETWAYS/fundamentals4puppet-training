@@ -347,6 +347,7 @@ after changing its configuration.
  * refreshonly
 * Use full path or provide path as attribute
 
+<!-- -->
     exec { 'command':
       path        => '/usr/sbin/:/sbin/',
       refreshonly => true,
@@ -418,7 +419,7 @@ This adjustment is common for services which loose information during restart bu
 
 ### Add a exec resource to restart apache using systemctl
 
-    # vi ~/puppet/manifests/apache.pp
+    $ vim ~/puppet/manifests/apache.pp
     exec { 'apache-restart':
       command     => 'systemctl restart apache',
       path        => '/usr/bin:/usr/sbin:/bin:/sbin',
@@ -427,7 +428,7 @@ This adjustment is common for services which loose information during restart bu
 
 ### Change the service resource to reload instead of restart with a systemctl command in the restart attribut
 
-    # vi ~/puppet/manifests/apache.pp
+    $ vim ~/puppet/manifests/apache.pp
     service {'httpd':
       ...
       #subscribe => File['/etc/httpd/conf/httpd.conf'],
@@ -436,7 +437,7 @@ This adjustment is common for services which loose information during restart bu
 
 ### Change the file resource to notify the exec instead of the service
 
-    # vi ~/puppet/manifests/apache.pp
+    $ vim ~/puppet/manifests/apache.pp
     file {'/etc/httpd/conf/httpd.conf':
       ...
       require => Package['httpd'],
@@ -447,6 +448,6 @@ This adjustment is common for services which loose information during restart bu
 
 Change something in the configuration file and apply the manifest.
 
-    # puppet agent -t
+    $ sudo puppet apply apache.pp
 
 Now you can decide in which cases a restart is required and when a reload is enough.
