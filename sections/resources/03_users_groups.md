@@ -18,7 +18,7 @@ or a small amount of administrative users. User management is still done
 best by central authentication services like ldap and kerberos.
 
 The file extension for files containing Puppet code is .pp, those files
-are called manifests. A syntax validaten for this files can be done with
+are called manifests. A syntax validation for this files can be done with
 "puppet parser validate".
 
 ~~~ENDSECTION~~~
