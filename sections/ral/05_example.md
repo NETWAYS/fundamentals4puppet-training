@@ -12,7 +12,7 @@
 * Challenges for automation:
  * Scripting
  * Error handling and logging
- * Multiple plattforms
+ * Multiple platforms
 
 ~~~SECTION:handouts~~~
 
@@ -33,7 +33,7 @@ changes on existing users and *userder* for deletion.
 
 This will all increase the challenge of automation of user management. It has to be scripted in a
 readable and maintainable way including error handling and logging. If your goal is the support of
-multiple plattforms it increases complexity and limits options.
+multiple platforms it increases complexity and limits options.
 
 ~~~ENDSECTION~~~
 

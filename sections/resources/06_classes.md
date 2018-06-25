@@ -135,10 +135,10 @@ class { 'apache': }
 !SLIDE smbullets
 # Idempotency of include
 
-* The function `include` is idempotence. That mean you can use the include of the same class several times in your code.
+* The function `include` is idempotent. That means you can use the include of the same class several times in your code.
 <pre>
 include apache
 include apache
 </pre>
 * The class is declared just once, the first time it was used.
-* Notice: A mix between the declaration with include and class doesn't work and pass to a doublicate declaration error. 
+* Notice: A mix between the declaration with include and class doesn't work and passes to a duplicate declaration error. 

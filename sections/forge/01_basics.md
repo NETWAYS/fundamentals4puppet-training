@@ -3,7 +3,7 @@
 
 http://forge.puppet.com
 
-* Community plattform for modules
+* Community platform for modules
  * 4000+ Modules by many different authors
  * Searchable
  * Supported, Partner supported and Approved Modules
@@ -25,7 +25,7 @@ http://forge.puppet.com
 
 ****
 
-With the Puppet Forge provides the vendor a community plattform for modules with a still growing number
+With the Puppet Forge provides the vendor a community platform for modules with a still growing number
 of modules by many different authors, projects and companies. The website is searchable to easly find a
 module managing a specific software or solving a common problem. For quality indicators look for modules
 markes as supported which are included in support offered with Puppet Enterprise, tested and a compatibility
@@ -126,14 +126,14 @@ There are two ways to use the Forge for its best.
 
 Easiest way is to use the modules as they are. Read the documentation and have a look at the code
 to see if a module can solve your problem. Most modules are parameterized in a way to solve most
-problems and support different plattforms. If you require changes try to incorporate them without
-breaking and push them upstream like adding another plattform. If you can not or do not want to
+problems and support different platforms. If you require changes try to incorporate them without
+breaking and push them upstream like adding another platform. If you can not or do not want to
 bring changes upstream try to only wrap aroung the module with a custom module. Both ways you keep
 the module upgradable so you do not have to maintain it on your own after installation.
 
 ~~~PAGEBREAK~~~
 
-Most forge modules support multiple plattforms and many different scenarios, many are over-engineered
+Most forge modules support multiple platforms and many different scenarios, many are over-engineered
 for one specific environment or in a style you do not like but can still be used as inspiration.
 So in some cases creating your own simple module solving your problem in a way you can understand and
 maintain is more usefull than simply taking a module from the forge and work around it.

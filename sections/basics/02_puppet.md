@@ -40,7 +40,7 @@ Build configuration from small components
 
 The domain specific language of Puppet allows to specify and manage your infrastructure with defined models instead of
 procedures. With this DSL complete services and applications can be modelled in a reusable and composable way which 
-supports multiple plattforms. Because of the central management you can make changes once and then test and deploy them
+supports multiple platforms. Because of the central management you can make changes once and then test and deploy them
 in a consistent fashion to multiple nodes.
 
 Puppet (the company behind Puppet formerly Puppet Labs) hosts the Puppet Forge which contains thousands of freely

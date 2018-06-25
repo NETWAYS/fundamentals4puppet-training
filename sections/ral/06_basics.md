@@ -5,7 +5,7 @@
  * Groups similar resources into resource types
  * Resource types have multiple providers
 * Resources can be declared always in the same fashion
-* A resource will be managed by the best matching provider on the plattform
+* A resource will be managed by the best matching provider on the platform
 
 
 !SLIDE smbullets small noprint

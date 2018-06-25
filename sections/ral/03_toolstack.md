@@ -43,7 +43,7 @@ Running Puppet in master mode is supported on most Linux distributions.
 * Sends information about itself to determine the configuration state (facts)
 * Enforces the retrieved configuration state (catalog)
 * Report enforcement back to master
-* Supported plattforms:
+* Supported platforms:
  * most Linux distributions
  * Windows
  * many Unix distributions

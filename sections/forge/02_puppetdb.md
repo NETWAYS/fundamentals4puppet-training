@@ -77,7 +77,7 @@ You can access the dashboard, pointing your browser to http://192.168.56.101:808
 
 On the puppet master use the puppet module tool to install "puppetlabs-puppetdb" into environment "master".
 
-    $ sudo puppet module install puppetlabs-puppetdb /etc/puppetlabs/code/modules
+    $ sudo puppet module install puppetlabs-puppetdb --modulepath /etc/puppetlabs/code/modules
 
 ### Assign it to your master
 

@@ -32,6 +32,7 @@ your modules for filtering and its charts allow to do a drilldown simply by clic
  * Assign it to your master
  * Run the puppet agent to install it
 
+
 !SLIDE supplemental exercises
 # Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: Puppet Explorer
 
@@ -58,6 +59,7 @@ It requires the address of your PuppetDB and also some Rewrite rules for PuppetD
 #### Expected Result:
 
 You can access the webinterface, pointing your browser to https://192.168.56.101.
+
 
 !SLIDE supplemental solutions
 # Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: Puppet Explorer

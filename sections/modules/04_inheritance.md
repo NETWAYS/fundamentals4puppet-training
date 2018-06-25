@@ -247,8 +247,8 @@ You need to add all the variables to your main class's parameter list.
           $service_name = 'apache2'
           $ssl          =  false
         }
-	default:
-	  fail('Your plattform is not supported.')
+	default: {
+	  fail('Your platform is not supported.')
         }
       }
     }

@@ -56,7 +56,7 @@ is required for your tool stack and which best suits your needs.
 !SLIDE smbullets small
 # Puppet Enterprise
 
-* Packaging for additional plattforms including additional components
+* Packaging for additional platforms including additional components
 * Puppet Enterprise Console as Webinterface
 * Additional Components
  * Puppet Node Manager - group nodes on facts
@@ -64,7 +64,7 @@ is required for your tool stack and which best suits your needs.
  * Puppet Configuration Manager - helps troubleshoot dependencies
  * Task Management - combines bolt with Puppet Enterprise Console and Orchestration API
 * Supported Modules
-* Automated Provisioning for some plattforms
+* Automated Provisioning for some platforms
 * Vendor support and service
 
 ~~~SECTION:handouts~~~
@@ -73,8 +73,8 @@ is required for your tool stack and which best suits your needs.
 
 Puppet itself is completly Open Source, but the Enterprise version adds to this Open Source tool.
 
-Open Source Packages are widely available, but some plattforms have a limited community so getting packages for example
-on AIX is difficult where Puppet Enterprise provides their complete toolstack for all plattforms they support in the same
+Open Source Packages are widely available, but some platforms have a limited community so getting packages for example
+on AIX is difficult where Puppet Enterprise provides their complete toolstack for all platforms they support in the same
 fashion. Also Puppet Enterprise Console adds an Webinterface for assigning configuration and view reports, but there are
 alternate frontend like Puppet Explorer or Foreman. 
 
@@ -83,8 +83,8 @@ alternate frontend like Puppet Explorer or Foreman.
 For the additional components not always is an alternative available but some
 can be build from the same components used in Puppet Enterprise and none of it is required. Puppet Support also includes
 support for specific modules but is also limited to those and does not cover your own code. Also they cooporate with other
-vendors to create solutions for automated provisioning on their plattform, but Foreman is more powerfull and supports more
-plattforms. So vendor support is only available for the Enterprise version, while Open Source support is available from
+vendors to create solutions for automated provisioning on their platform, but Foreman is more powerfull and supports more
+platforms. So vendor support is only available for the Enterprise version, while Open Source support is available from
 different sources covering sometimes more or at least other components.
 
 At the end it is your choice if you want to use Puppet Enterprise and can take some benefit of the commercial version or
