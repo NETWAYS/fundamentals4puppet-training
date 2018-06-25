@@ -101,7 +101,7 @@ if you use the Open Source version and add components you require and perhaps bu
  * Make Puppet Collection available.
  * Inspect what version is installed on your master.
  * Install puppet-agent in the inspected version.
- * Extend your path variable to include the puppet command.
+ * Extend the secure path variable to include the puppet command.
 
 
 !SLIDE supplemental exercises
@@ -124,7 +124,7 @@ URL: http://yum.puppet.com/puppet5/puppet5-release-el-7.noarch.rpm
 * Inspect what version is installed on your master
 
 * Install puppet-agent using yum
-* Extend your path variable to include the puppet command
+* Extend the secure path variable to include the puppet command
 
 Path: /opt/puppetlabs/bin/
 
@@ -155,8 +155,7 @@ You can successfully execute "puppet --version" and "facter --version".
 
     $ sudo yum install puppet-agent-x.y.z-n.el7.x86_64 -y
 
-### Extend your path variable to include the puppet command
+### Extend the secure path variable to include the puppet command
 
-    $ vim ~/.bash_profile
-    PATH=$PATH:$HOME/bin:/opt/puppetlabs/bin
-    $ . ~/.bash_profile
+    $ sudo visudo
+    Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/opt/puppetlabs/bin
