@@ -116,7 +116,7 @@ with "ls -la".
 
 ****
 
-The user attribute _groups_ is an array. Puppet uses the same notation for array like ruby, a comma separated list of
+The user attribute _groups_ is an array. Puppet uses the same notation for arrays like ruby, a comma separated list of
 elements in square brackets.
 
 ~~~ENDSECTION~~~
@@ -194,7 +194,6 @@ first, add "-d" if you want to see the commands executed.
 To verify the user's group membership you can use "id".
 
     $ sudo id myuser
-
 
 
 !SLIDE smbullets small
