@@ -111,6 +111,7 @@ Pointing your browser to "http://vhost.localdomain" shows "Hello World"
 
     $ vim ~/puppet/manifests/vhost.pp
     host { 'vhost.localdomain':
+      ensure       => present,
       ip           => '127.0.0.1',
       host_aliases => ['vhost'],
     }

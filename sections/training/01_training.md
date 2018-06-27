@@ -30,7 +30,7 @@ also show the difference between the Open Source and Enterprise version.
 
 ## Modules and Classes
 
-In this chapter the basic ressource types are introduced and language constructs like dependencies,
+In this chapter the basic resource types are introduced and language constructs like dependencies,
 resource defaults, variables and variable types and programmatic constructs. These resource types will
 be combined to classes and modules which will be used in the common roles-profiles-pattern.
 

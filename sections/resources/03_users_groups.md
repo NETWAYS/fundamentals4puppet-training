@@ -250,8 +250,7 @@ Your personal user can login into your system without a password
 
 Open a terminal on your laptop and execute "ssh-keygen". Keep the passphrase empty if you like.
 
-    $ ssh-keygen
-    /home/training/.ssh/training_ssh
+    $ ssh-keygen /home/training/.ssh/training_ssh
     [Enter]
     [Enter]
     $ cat /home/training/.ssh/training_ssh.pub

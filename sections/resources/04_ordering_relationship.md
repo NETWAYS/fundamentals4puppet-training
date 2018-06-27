@@ -20,6 +20,7 @@ explicitly.
 
 ~~~ENDSECTION~~~
 
+
 !SLIDE smbullets small noprint
 # Implicit Dependencies
 
@@ -206,6 +207,7 @@ and stick to those pointing left to right.
 
 ~~~ENDSECTION~~~
 
+
 !SLIDE smbullets small
 # Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: Package-File-Service Pattern
 
@@ -376,7 +378,7 @@ The command has to be defined with the full path or the attribute "path" has to 
 * Objective:
  * Add an exec resource to change restart behaviour
 * Steps:
- * Add a exec resource to restart apache
+ * Add an exec resource to restart apache
  * Change the service resource to reload instead of restart
  * Change the file resource to notify the exec instead of the service
  * Apply the manifest
@@ -403,7 +405,7 @@ This adjustment is common for services which loose information during restart bu
 
 ****
 
-* Add a exec resource to restart apache using systemctl
+* Add an exec resource to restart apache using systemctl
 * Change the service resource to reload instead of restart with a systemctl command in the restart attribut
 * Change the file resource to notify the exec instead of the service
 * Apply the manifest
@@ -417,11 +419,11 @@ This adjustment is common for services which loose information during restart bu
 
 ****
 
-### Add a exec resource to restart apache using systemctl
+### Add an exec resource to restart apache using systemctl
 
     $ vim ~/puppet/manifests/apache.pp
     exec { 'apache-restart':
-      command     => 'systemctl restart apache',
+      command     => 'systemctl restart httpd',
       path        => '/usr/bin:/usr/sbin:/bin:/sbin',
       refreshonly => true,
     }
