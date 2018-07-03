@@ -77,7 +77,7 @@ the most cases by using `include` or `contain` and some class parameters.
 
 
 !SLIDE smbullets small
-# Params.pp pattern
+# Params.pp Pattern
 
 * Seperate calculating default parameter from code
  * params.pp handles parameter calculation
@@ -179,18 +179,18 @@ this widely adopted pattern. One of the possible ways to do so we will see later
 
 
 !SLIDE smbullets small
-# Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: Params.pp pattern
+# Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: Params.pp Pattern
 
 * Objective:
  * Move the default parameters of your apache class to a seperate class
 * Steps:
  * Create a params class providing your default parameters
- * Remove the parameter calculation based on osfamily from your main class
+ * Remove the parameter calculation based on "$::osfamily" from your main class
  * Inherit your params class and use its values as default
 
 
 !SLIDE supplemental exercises
-# Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: Params.pp pattern
+# Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: Params.pp Pattern
 
 ## Objective:
 
@@ -204,12 +204,12 @@ this widely adopted pattern. One of the possible ways to do so we will see later
 
 * Create a params class providing your default parameters
 
-Provide all parameters of the calculation based on osfamily and also the ssl
-parameter which should be default true for all osfamilies support is implemented.
+Provide all parameters of the calculation based on "$::osfamily" and also the "$ssl"
+parameter which should be default "true" for all operating system families support is implemented.
 
-* Remove the parameter calculation based on osfamily from your main class
+* Remove the parameter calculation based on "$::osfamily" from your main class
 
-You have to keep the calculation for ensure in the main class because of being
+You have to keep the calculation for "$ensure" in the main class because of being
 based on a parameter provided to this class.
 
 * Inherit your params class and use its values as default
@@ -218,7 +218,7 @@ You need to add all the variables to your main class's parameter list.
 
 
 !SLIDE supplemental solutions
-# Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: Params.pp pattern
+# Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: Params.pp Pattern
 
 ****
 
@@ -232,20 +232,18 @@ You need to add all the variables to your main class's parameter list.
     class apache::params {
       case $::osfamily {
         'RedHat': {
-          $package_name = 'httpd'
-          $config_dir   = '/etc/httpd'
-          $main_config  = "${config_dir}/conf/httpd.conf"
-          $conf_d       = "${config_dir}/conf.d"
-          $service_name = 'httpd'
-          $ssl          =  true
+          $packagename = 'httpd'
+          $configdir   = '/etc/httpd'
+          $mainconfig  = "${configdir}/conf/httpd.conf"
+          $servicename = 'httpd'
+          $ssl         =  true
         }
         'Debian': {
-          $package_name = 'apache2'
-          $config_dir   = '/etc/apache2'
-          $main_config  = "$config_dir/apache2.conf"
-          $conf_d       = "${config_dir}/conf.d"
-          $service_name = 'apache2'
-          $ssl          =  false
+          $packagename = 'apache2'
+          $configdir   = '/etc/apache2'
+          $main_config = "${configdir}/apache2.conf"
+          $servicename = 'apache2'
+          $ssl         =  false
         }
 	default: {
 	  fail('Your platform is not supported.')
@@ -253,21 +251,25 @@ You need to add all the variables to your main class's parameter list.
       }
     }
 
-### Remove the parameter calculation based on osfamily from your main class
+### Remove the parameter calculation based on "$::osfamily" from your main class
 
     $ vim ~/puppet/modules/apache/manifests/init.pp
-    ...
-    # case $::osfamily {
-    #   ...
-    # }
-    ...
+    class apache (
+      ...
+    ) {
+      #case $::osfamily {
+      #  ...
+      #}
+      ...
+    }
 
 ### Inherit your params class and use its values as default
 
     $ vim ~/puppet/modules/apache/manifests/init.pp
     class apache (
-      Enum['running','stopped'] $ensure      = 'running',
-      Boolean			$enable      = true,
-      Boolean                   $ssl         = $apache::params::ssl,
+      Enum['running','stopped'] $ensure = 'running',
+      Boolean			$enable = true,
+      Boolean                   $ssl    = $apache::params::ssl,
     ) inherits apache::params {
-    ...
+      ...
+    }
