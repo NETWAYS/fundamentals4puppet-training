@@ -45,7 +45,6 @@ class {'apache':
 }
 </pre>
 
-
 ~~~SECTION:handouts~~~
 
 ****
@@ -66,10 +65,10 @@ set parameters in the same way you set attributes of other resources.
 * Objective:
  * Parameterize your apache class
 * Steps:
- * Promote the variable $ensure to be a parameter that handle the apache service
- * and a parameter $enable to set the behavoir during the system start.
- * Add a boolean parameter $ssl managing ssl support.
- * Write some smoke tests.
+ * Promote the variable "$ensure" to be a parameter that handles the apache service
+ * Add a parameter "$enable" to set the behaviour during the system start
+ * Add a boolean parameter "$ssl" managing ssl support
+ * Write some smoke tests
 
 
 !SLIDE supplemental exercises
@@ -85,15 +84,15 @@ set parameters in the same way you set attributes of other resources.
 
 ****
 
-* Promote the variable $ensure to be a parameter that handle the apache service
-* and a parameter $enable to set the behavoir during the system start.
-* Add a boolean parameter $ssl managing ssl support.
+* Promote the variable "$ensure" to be a parameter that handles the apache service
+* Add a parameter "$enable" to set the behavoir during the system start
+* Add a boolean parameter "$ssl" managing ssl support
 
 To add ssl support on CentOS installing the package mod_ssl and reloading the apache
 web service is enough. Optionally you can add Debian support.
 
 * Add a smoke test for a stopped webserver
-* and one to test enable for ssl
+* And a smoke test to test "$enable" for ssl
 
 
 !SLIDE supplemental solutions
@@ -105,10 +104,10 @@ web service is enough. Optionally you can add Debian support.
 
 ****
 
-### Promote the variable $ensure to be a parameter
+### Promote the variable "$ensure" to be a parameter
 
-Change your class to provide a parameter $ensure which takes "running" and "stopped" with
-a default of "running". And a Boolean parameter named $enable with a default to true. Both
+Change your class to provide a parameter "$ensure" which takes "running" and "stopped" with
+a default of "running". And a Boolean parameter named "$enable" with a default to "true". Both
 have to manage the service.
 
     $ vim ~/puppet/modules/apache/manifests/init.pp
@@ -117,34 +116,42 @@ have to manage the service.
       Boolean                   $enable = true,
     ) {
       ...
-      service { $httpd_pkg:
-        ensure => $ensure,
+      #$ensure = 'present'
+
+      if $ensure == 'absent' {
+        ...
+        #$enable_service = false
+      } else {
+        ...
+        #$enable_service = true
+      }
+
+      service { 'httpd':
+        ensure => $ensure_service,
         enable => $enable,
       }
     }
 
-### Add a boolean parameter $ssl managing ssl support
+### Add a boolean parameter "$ssl" managing ssl support
 
-Add a boolean parameter $ssl. Its default is 'false', but if changed to 'true' on CentOS
-the package 'mod_ssl' should be installed and the service 'httpd' should be notified. You
-can also handle the case of 'absent' but package dependencies would be enough in this simple
+Add a boolean parameter "$ssl". Its default is "false", but if changed to "true" on CentOS
+the package "mod_ssl" should be installed and the service "httpd" should be notified. You
+can also handle the case of "absent" but package dependencies would be enough in this simple
 setup.
 
     $ vim ~/puppet/modules/apache/manifests/init.pp
     class apache (
-      Boolean                  $ssl    = false,
-    ) {
       ...
-      case $::osfamily {
-        'RedHat': {
-          package {'mod_ssl':
-            ensure => $ssl ? {
-              true    => installed,
-              default => absent,
-            }
-          } # package
+      Boolean                   $ssl = false,
+    ) {
+      if $::osfamily == 'RedHat' {
+        package { 'mod_ssl':
+          ensure => $ssl ? {
+            true    => installed,
+            default => absent,
+          }
         }
-      } # $::osfamily
+      }
       ...
     }
 
@@ -152,12 +159,16 @@ setup.
 
 Creating a smoke test allows you to validate your parameterized class.
 
-    $ cat ~/puppet/modules/apache/examples/init_stopped.pp 
+    $ vim ~/puppet/modules/apache/examples/init_stopped.pp 
     class { 'apache':
       ensure => stopped,
     }
-    
-    $ cat ~/puppet/modules/apache/examples/init_ssl.pp 
+
+    $ sudo puppet apply --modulepath ~/puppet/modules/ ~/puppet/modules/apache/examples/init_stopped.pp
+
+    $ vim ~/puppet/modules/apache/examples/init_ssl.pp 
     class { 'apache':
       ssl => true,
     }
+
+    $ sudo puppet apply --modulepath ~/puppet/modules/ ~/puppet/modules/apache/examples/init_ssl.pp
