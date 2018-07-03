@@ -44,7 +44,7 @@ are called manifests. A syntax validation for this files can be done with
 
 #### Expected result:
 
-Your personal user and its home directory is created
+Your personal user and its home directory is created.
 
 
 !SLIDE supplemental solutions
@@ -66,6 +66,7 @@ Change to the directory "manifests" and create "user.pp"
 Declare your user with your typically username, ensure that he is present
 and set its shell to "/bin/bash"
 
+    $ ~/puppet/manifests/user.pp
     user { 'myuser':
       ensure => present,
       shell  => '/bin/bash',
@@ -77,6 +78,7 @@ and set its shell to "/bin/bash"
 Enforcing the user now would create your home directory depending on the default of your
 operatingsystem, to enforce its creation set the attribute "managehome" to true.
 
+    $ vim ~/puppet/manifests/user.pp
     user { 'myuser':
       ensure     => present,
       shell      => '/bin/bash',
@@ -89,16 +91,16 @@ Save the manifest and then use "puppet apply" to enforce it. Add "--noop" if you
 first, add "-d" if you want to see the commands executed. If you are not sure about the syntax run
 the syntax validation before.
 
-    $ puppet parser validate user.pp
-    $ sudo puppet apply --noop user.pp
-    $ sudo puppet apply -d user.pp
+    $ puppet parser validate ~/puppet/manifests/user.pp
+    $ sudo puppet apply --noop ~/puppet/manifests/user.pp
+    $ sudo puppet apply -d ~/puppet/manifests/user.pp
 
 To verify the user's existence you can use "id" or "getent", also verify the creation of the home directory
 with "ls -la".
 
     $ sudo id myuser
     $ sudo getent passwd myuser
-    $ sudo ls -la ~myuser
+    $ sudo ls -la /home/myuser/
 
 
 !SLIDE smbullets small
@@ -142,7 +144,7 @@ elements in square brackets.
 
 #### Expected result:
 
-Your personal user is member of the newly created groups
+Your personal user is member of the newly created groups.
 
 
 !SLIDE supplemental solutions
@@ -158,6 +160,7 @@ Your personal user is member of the newly created groups
 
 Open your manifest user.pp and add a group resource.
 
+    $ vim ~/puppet/manifests/user.pp
     group { 'myuser':
       ensure => present,
     }
@@ -166,6 +169,7 @@ Open your manifest user.pp and add a group resource.
 
 Add another group resource.
 
+    $ vim ~/puppet/manifests/user.pp
     group { 'admins':
       ensure => present,
     }
@@ -175,6 +179,7 @@ Add another group resource.
 
 Add the groups to your user definition
 
+    $ vim ~/puppet/manifests/user.pp
     user { 'myuser':
       ensure     => present,
       shell      => '/bin/bash',
@@ -188,8 +193,8 @@ Add the groups to your user definition
 Save the manifest and then use "puppet apply" to enforce it. Add "--noop" if you want to simulate
 first, add "-d" if you want to see the commands executed.
 
-    $ sudo puppet apply --noop user.pp
-    $ sudo puppet apply -d user.pp
+    $ sudo puppet apply --noop ~/puppet/manifests/user.pp
+    $ sudo puppet apply -d ~/puppet/manifests/user.pp
 
 To verify the user's group membership you can use "id".
 
@@ -234,7 +239,7 @@ Make sure to use the proper attributes of the ssh_authorized_key resource. Type,
 
 #### Expected result:
 
-Your personal user can login into your system without a password
+Your personal user can login into your system without a password.
 
 
 !SLIDE supplemental solutions
@@ -250,10 +255,16 @@ Your personal user can login into your system without a password
 
 Open a terminal on your laptop and execute "ssh-keygen". Keep the passphrase empty if you like.
 
-    $ ssh-keygen /home/training/.ssh/training_ssh
-    [Enter]
-    [Enter]
-    $ cat /home/training/.ssh/training_ssh.pub
+    $ ssh-keygen
+    Generating public/private rsa key pair.
+    Enter file in which to save the key (/home/training/.ssh/id_rsa): /home/training/.ssh/training_ssh
+    Created directory '/home/training/.ssh'.
+    Enter passphrase (empty for no passphrase): 
+    Enter same passphrase again: 
+    Your identification has been saved in /home/training/.ssh/training_ssh.
+    Your public key has been saved in /home/training/.ssh/training_ssh.pub.
+
+    $ cat ~/.ssh/training_ssh.pub
 
 ### Add a ssh_authorized_key resource to distribute your public key
 
@@ -261,6 +272,7 @@ Add a ssh_authorized_key resource to distribute your public key. The first part 
 the command above is the type, the second one is the key itself and the third is the comment which
 you are not required to keep.
 
+    $ vim ~/puppet/manifests/user.pp
     ssh_authorized_key { 'myuser':
       ensure => present,
       type   => 'ssh-rsa',
@@ -273,8 +285,8 @@ you are not required to keep.
 Save the manifest and then use "puppet apply" to enforce it. Add "--noop" if you want to simulate
 first, add "-d" if you want to see the commands executed.
 
-    $ sudo puppet apply --noop user.pp
-    $ sudo puppet apply -d user.pp
+    $ sudo puppet apply --noop ~/puppet/manifests/user.pp
+    $ sudo puppet apply -d ~/puppet/manifests/user.pp
 
 To verify the login try to connect to the virtual machine from your laptop.
 
@@ -324,7 +336,7 @@ and has to be followed by a newline. Password input is required by default which
 
 #### Expected result:
 
-Your personal user can run commands as root via sudo
+Your personal user can run commands as root via sudo.
 
 
 !SLIDE supplemental solutions
@@ -340,6 +352,7 @@ Your personal user can run commands as root via sudo
 
 Edit your manifest to include a definition ensuring the package "sudo" is installed.
 
+    $ vim ~/puppet/manifests/user.pp
     package { 'sudo':
       ensure => present,
     }
@@ -349,6 +362,7 @@ Edit your manifest to include a definition ensuring the package "sudo" is instal
 Add a file resource "/etc/sudoers.d/myuser" with owner "root", group "root", mode "0400" and content
 "myuser ALL=(ALL) NOPASSWD: ALL".
 
+    $ vim ~/puppet/manifests/user.pp
     file { '/etc/sudoers.d/myuser': 
       ensure  => file,
       owner   => 'root',
@@ -362,8 +376,8 @@ Add a file resource "/etc/sudoers.d/myuser" with owner "root", group "root", mod
 Save the manifest and then use "puppet apply" to enforce it. Add "--noop" if you want to simulate
 first, add "-d" if you want to see the commands executed.
 
-    $ sudo puppet apply --noop user.pp
-    $ sudo puppet apply -d user.pp
+    $ sudo puppet apply --noop ~/puppet/manifests/user.pp
+    $ sudo puppet apply -d ~/puppet/manifests/user.pp
 
 You can verify the sudo permissions by displaying them with sudo or testing it as the user.
 
