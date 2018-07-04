@@ -100,24 +100,24 @@ default for clarity’s sake.
 
 
 !SLIDE smbullets small
-# Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: Case statements
+# Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: Case Statement
 
 * Objective:
- * Add debian support to your apache manifest by using a case statement
+ * Add Debian support to your apache manifest by using a case statement
 * Steps:
  * Move your package, config file and service name to variables
  * Add the variables as value for the namevar of your resources
- * Add a case statement setting the variables depending on the osfamily
+ * Add a case statement setting the variables depending on the "osfamily"
 
 
 !SLIDE supplemental exercises
-# Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: Case statements
+# Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: Case Statement
 
 ## Objective:
 
 ****
 
-* Add debian support to your apache manifest by using a case statement
+* Add Debian support to your apache manifest by using a case statement
 
 ## Steps:
 
@@ -125,66 +125,73 @@ default for clarity’s sake.
 
 * Move your package, config file and service name to variables
 * Add the variables as value for the namevar of your resources
-* Add a case statement setting the variables depending on the osfamily
+* Add a case statement setting the variables depending on the "osfamily"
 
 #### Expected Result:
 
-Your manifest still works as before and is capable of handling debian.
+Your manifest still works as before and is capable of handling Debian
+
 
 !SLIDE supplemental solutions
-# Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: Case statements
+# Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: Case Statement
 
 ****
 
-## Add debian support to your apache manifest by using a case statement
+## Add Debian support to your apache manifest by using a case statement
 
 ****
 
 ### Move your package, config file and service name to variables
 
     $ vim ~/puppet/manifests/apache.pp
-    $packagename = 'httpd'
-    $configdir   = '/etc/httpd'
-    $mainconfig  = "${configdir}/conf/httpd.conf"
-    $servicename = 'httpd'
+    class apache {
+      $packagename = 'httpd'
+      $configdir   = '/etc/httpd'
+      $mainconfig  = "${configdir}/conf/httpd.conf"
+      $servicename = 'httpd'
+      ...
+    }
 
 ### Add the variables as value for the namevar of your resources
 
     $ vim ~/puppet/manifests/apache.pp
-    package {'httpd':
+    package { 'httpd':
       ...
-      name   => $packagename,
+      name => $packagename,
     }
     
-    file {'httpd.conf':
+    file { 'httpd.conf':
       ...
-      path    => $mainconfig,
-      ...
-      require => Package['httpd'],
+      path => $mainconfig,
     }
     
-    service {'httpd':
+    service { 'httpd':
       ...
-      name      => $servicename,
-      subscribe => File['httpd.conf'],
+      name => $servicename,
     }
 
-### Add a case statement setting the variables depending on the osfamily
+### Add a case statement setting the variables depending on the "osfamily"
 
     $ vim ~/puppet/manifests/apache.pp
-    case $::osfamily {
-      'RedHat': {
-        $packagename = 'httpd'
-        $configdir   = '/etc/httpd'
-        $mainconfig  = "${configdir}/conf/httpd.conf"
-        $servicename = 'httpd'
+    class apache {
+      case $::osfamily {
+        'RedHat': {
+          $packagename = 'httpd'
+          $configdir   = '/etc/httpd'
+          $mainconfig  = "${configdir}/conf/httpd.conf"
+          $servicename = 'httpd'
+        }
+        'Debian': {
+          $packagename = 'apache2'
+          $configdir   = '/etc/apache2'
+          $mainconfig  = "${configdir}/apache2.conf"
+          $servicename = 'apache2'
+        }
+        default: {
+          fail('Your platform is not supported')
+        }
       }
-      default: {
-        $packagename = 'apache2'
-        $configdir   = '/etc/apache2'
-        $mainconfig  = "${configdir}/apache2.conf"
-        $servicename = 'apache2'
-      }
+      ...
     }
 
 
@@ -254,15 +261,16 @@ readable.
 
 ~~~ENDSECTION~~~
 
+
 !SLIDE smbullets small
 # Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: If Statement
 
 * Objective:
  * Allow to purge the Apache webserver
 * Steps:
- * Create a if statement based on a variable ensure to set state of your resources
+ * Create a if statement based on a variable "$ensure" to set the state of your resources
  * Use this variables in your resource declarations
- * Adjust the dependency chain based on ensure
+ * Adjust the dependency chain based on "$ensure" to bring also purging in correct order
 
 
 !SLIDE supplemental exercises
@@ -278,9 +286,9 @@ readable.
 
 ****
 
-* Create a if statement based on a variable ensure to set state of your resources
+* Create a if statement based on a variable "$ensure" to set the state of your resources
 * Use this variables in your resource declarations
-* Adjust the dependency chain based on ensure to bring also purging in correct order
+* Adjust the dependency chain based on "$ensure" to bring also purging in correct order
 
 
 !SLIDE supplemental solutions
@@ -292,64 +300,60 @@ readable.
 
 ****
 
-### Create a if statement based on a variable ensure to set state of your resources
+### Create a if statement based on a variable "$ensure" to set the state of your resources
 
-Add a variable ensure to the top of your manifest and then set values corresponding
+Add a variable "$ensure" to the top of your manifest and then set values corresponding
 to the resource types. Explicitly requiring absent ensures the default is the more common
 use case.
 
     $ vim ~/puppet/manifests/apache.pp
-    $ensure = 'present'
+    class apache {
+      $ensure = 'present'
     
-    if $ensure == 'absent' {
-      $ensure_package = 'purged'
-      $ensure_file    = 'absent'
-      $ensure_service = 'stopped'
-      $enable_service = false
-    } else {
-      $ensure_package = 'present'
-      $ensure_file    = 'file'
-      $ensure_service = 'running'
-      $enable_service = true
+      if $ensure == 'absent' {
+        $ensure_package = 'purged'
+        $ensure_file    = 'absent'
+        $ensure_service = 'stopped'
+        $enable_service = false
+      } else {
+        $ensure_package = 'present'
+        $ensure_file    = 'file'
+        $ensure_service = 'running'
+        $enable_service = true
+      }
+      ...
     }
 
 ### Use this variables in your resource declarations
 
     $ vim ~/puppet/manifests/apache.pp
-    package {'httpd':
+    package { 'httpd':
       ensure => $ensure_package,
       ...
     }
     
-    file {'httpd.conf':
-      ensure  => $ensure_file,
+    file { 'httpd.conf':
+      ensure => $ensure_file,
       ...
     }
     
-    service {'httpd':
-      ensure    => $ensure_service,
-      enable    => $enable_service,
+    service { 'httpd':
+      ensure => $ensure_service,
+      enable => $enable_service,
       ...
     }
 
-~~~PAGEBREAK~~~
+### Adjust the dependency chain based on "ensure" to bring also purging in correct order
 
-### Adjust the dependency chain based on ensure to bring also purging in correct order
-
-Adjusting the dependency chain based on the value of ensure is required that purge it completely
+Adjusting the dependency chain based on the value of "ensure" is required that purge it completely
 works fine. This is a very good example for the usage of the arrow syntax for declaring dependencies,
 but not a typical example for common use in modules. In most public modules only small parts like
-features will have also deactivation routine.
+features will also have a deactivation routine.
 
     $ vim ~/puppet/manifests/apache.pp
-    file {'httpd.conf':
+    file { 'httpd.conf':
       ...
-    #  require => Package['httpd'],
-    }
-    
-    service {'httpd':
-      ...
-    #  subscribe => File['httpd.conf'],
+      #require => Package['httpd'],
     }
     
     if $ensure == "absent" {

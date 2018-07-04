@@ -100,7 +100,7 @@ will result in a non printed line.
 
 
 !SLIDE smbullets small
-# Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: ERB Templates
+# Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: ERB Template
 
 * Objective:
  * Move your vhost configuration to an erb template
@@ -110,7 +110,7 @@ will result in a non printed line.
 
 
 !SLIDE supplemental exercises
-# Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: ERB Templates
+# Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: ERB Template
 
 ## Objective:
 
@@ -134,7 +134,7 @@ Your manifest still works the same ways but can handle multiple vhost with just 
 
 
 !SLIDE supplemental solutions
-# Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: ERB Templates
+# Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: ERB Template
 
 ****
 
@@ -147,10 +147,11 @@ Your manifest still works the same ways but can handle multiple vhost with just 
 The file extension .erb is not required but it enables syntax checking on templates based on it.
 
     $ cp ~/puppet/files/vhost.conf ~/puppet/templates/vhost.conf.erb
+
     $ vim ~/puppet/templates/vhost.conf.erb
     <VirtualHost *:80>
-        DocumentRoot "<%= @documentroot %>"
-        ServerName <%= @fullname %>
+      DocumentRoot "<%= @documentroot %>"
+      ServerName <%= @fullname %>
     </VirtualHost>
 
 ### Change the resource to use the template function for content instead of a static file as source
@@ -185,7 +186,6 @@ Value is &lt;%= value %&gt;
 &lt;% } -%&gt;
 </pre>
 
-
 ~~~SECTION:handouts~~~
 
 ****
@@ -200,7 +200,7 @@ use them in the same ways like in your manifests.
 
 
 !SLIDE smbullets small
-# Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: EPP Templates
+# Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: EPP Template
 
 * Objective:
  * Create your webserver content from an epp template
@@ -210,7 +210,7 @@ use them in the same ways like in your manifests.
 
 
 !SLIDE supplemental exercises
-# Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: EPP Templates
+# Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: EPP Template
 
 ## Objective:
 
@@ -251,7 +251,6 @@ and falls back to "Hello World". The parameter from is per default undefined and
     <%- | String           $greeting = "Hello World",
           Optional[String] $from     = undef
     | -%>
-
     <h1><%= $greeting %> <% unless $from =~ Undef { -%> from <%= $from %><% } -%></h1>
 
 ### Change the resource to use the template instead of fixed string

@@ -269,9 +269,8 @@ Pointing your browser to http://agent-centos.localdomain/ will show you the test
 
 Create a new manifest "apache.pp" and declare a package resource "httpd" to be installed.
 
-    $ cd ~/puppet/manifests/
-    $ vim apache.pp
-    package {'httpd':
+    $ vim ~/puppet/manifests/apache.pp
+    package { 'httpd':
       ensure => present,
     }
 
@@ -280,9 +279,10 @@ Create a new manifest "apache.pp" and declare a package resource "httpd" to be i
 Copy the original configuration file to the "puppet/files" directory in your home directory as a source and then add a file resource managing "/etc/httpd/conf/httpd.conf"
 to your manifest. To get the file install the apache package manually oder run the apply command on your manifest before doing this step.
 
-    $ cp /etc/httpd/conf/httpd.conf ~/puppet/files/httpd.conf
-    $ vim apache.pp
-    file {'/etc/httpd/conf/httpd.conf':
+    $ cp /etc/httpd/conf/httpd.conf ~/puppet/files/
+
+    $ vim ~/puppet/manifests/apache.pp
+    file { '/etc/httpd/conf/httpd.conf':
       ensure  => file,
       owner   => 'root',
       group   => 'root',
@@ -294,8 +294,8 @@ to your manifest. To get the file install the apache package manually oder run t
 
 Add a service resource which enables and starts "httpd".
 
-    $ vim apache.pp
-    service {'httpd':
+    $ vim ~/puppet/manifests/apache.pp
+    service { 'httpd':
       ensure    => running,
       enable    => true,
     }
@@ -305,17 +305,17 @@ Add a service resource which enables and starts "httpd".
 With Puppet 4's manifest based ordering the three resource would already be applied in correct order, but no refresh
 would happen. Also understanding the code is easier if dependencies are explicitly declared.
 
-    $ vim apache.pp
-    package {'httpd':
+    $ vim ~/puppet/manifests/apache.pp
+    package { 'httpd':
       ...
     }
     
-    file {'/etc/httpd/conf/httpd.conf':
+    file { '/etc/httpd/conf/httpd.conf':
       ...
       require => Package['httpd'],
     }
     
-    service {'httpd':
+    service { 'httpd':
       ...
       subscribe => File['/etc/httpd/conf/httpd.conf'],
     }
@@ -325,7 +325,7 @@ would happen. Also understanding the code is easier if dependencies are explicit
 
 Save the manifest and then enforce it.
 
-    $ puppet apply apache.pp
+    $ sudo puppet apply ~/puppet/manifests/apache.pp
 
 ### Add the "Servername" to the configuration and apply again to see the service being restarted
 
@@ -335,7 +335,7 @@ after changing its configuration.
     $ vim ~/puppet/files/httpd.conf
     Servername agent-centos.localdomain:80
 
-    $ sudo puppet apply apache.pp
+    $ sudo puppet apply ~/puppet/manifests/apache.pp
 
 
 !SLIDE smbullets small
@@ -410,6 +410,7 @@ This adjustment is common for services which loose information during restart bu
 * Change the file resource to notify the exec instead of the service
 * Apply the manifest
 
+
 !SLIDE supplemental solutions
 # Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: Exec Resource
 
@@ -428,10 +429,10 @@ This adjustment is common for services which loose information during restart bu
       refreshonly => true,
     }
 
-### Change the service resource to reload instead of restart with a systemctl command in the restart attribut
+### Change the service resource to reload instead of restart with a systemctl command in the restart attribute
 
     $ vim ~/puppet/manifests/apache.pp
-    service {'httpd':
+    service { 'httpd':
       ...
       #subscribe => File['/etc/httpd/conf/httpd.conf'],
       restart   => '/usr/bin/systemctl reload httpd',
@@ -440,7 +441,7 @@ This adjustment is common for services which loose information during restart bu
 ### Change the file resource to notify the exec instead of the service
 
     $ vim ~/puppet/manifests/apache.pp
-    file {'/etc/httpd/conf/httpd.conf':
+    file { '/etc/httpd/conf/httpd.conf':
       ...
       require => Package['httpd'],
       notify  => Exec['apache-restart'],
@@ -450,6 +451,6 @@ This adjustment is common for services which loose information during restart bu
 
 Change something in the configuration file and apply the manifest.
 
-    $ sudo puppet apply apache.pp
+    $ sudo puppet apply ~/puppet/manifests/apache.pp
 
 Now you can decide in which cases a restart is required and when a reload is enough.

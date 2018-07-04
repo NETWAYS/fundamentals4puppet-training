@@ -64,7 +64,7 @@ allows to be stack together in multiple ways.
 
 #### Expected Result:
 
-You will notice Puppet is not managing your resources when applying your class defintion
+You will notice Puppet is not managing your resources when applying your class definition.
 
 
 !SLIDE supplemental solutions
@@ -105,7 +105,6 @@ include it in a configuration; it simply makes it available to be declared.
 
 To direct Puppet to include or instantiate a given class. To declare classes, use the include
 function. This tells Puppet to evaluate the class and manage all the resources declared within it.
-
 
 ~~~SECTION:handouts~~~
 

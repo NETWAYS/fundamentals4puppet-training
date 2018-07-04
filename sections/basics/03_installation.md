@@ -159,3 +159,5 @@ You can successfully execute "puppet --version" and "facter --version".
 
     $ sudo visudo
     Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/opt/puppetlabs/bin
+
+    $ exec bash

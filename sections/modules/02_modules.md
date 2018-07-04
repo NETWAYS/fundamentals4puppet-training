@@ -111,7 +111,7 @@ like 'template(*modulename*/*filename.erb*)' or 'epp(*modulename*/*filename.epp*
 
 
 !SLIDE smbullets small
-# Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: Modules
+# Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: Module
 
 * Objective:
  * Build a module to handle your apache class
@@ -123,7 +123,7 @@ like 'template(*modulename*/*filename.erb*)' or 'epp(*modulename*/*filename.epp*
 
 
 !SLIDE supplemental exercises
-# Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: Modules
+# Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: Module
 
 ## Objective:
 
@@ -142,11 +142,11 @@ like 'template(*modulename*/*filename.erb*)' or 'epp(*modulename*/*filename.epp*
 
 #### Expected Result:
 
-Applying the smoke test manages all declared resources
+Applying the smoke test manages all declared resources.
 
 
 !SLIDE supplemental solutions
-# Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: Modules
+# Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: Module
 
 ****
 
@@ -157,7 +157,7 @@ Applying the smoke test manages all declared resources
 ### Create the structure for your apache module in ~/puppet/modules
 
 It requires a directory apache with subdirectories manifests, files, templates and examples.
-Make sure to use the plural, most common mistake is using the singular which will prevent
+Make sure to use the plural, the most common mistake is using the singular which will prevent
 autoloading from working.
 
     $ mkdir -p ~/puppet/modules/apache/{manifests,files,templates,examples}

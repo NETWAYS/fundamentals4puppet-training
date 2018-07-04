@@ -36,9 +36,7 @@ The server is nearly a drop-in replacement, using the same configuration from pu
 and other master specific configuration files, but some small difference can be noticed.
 Listed on https://docs.puppet.com/puppetserver/2.3/puppetserver_vs_passenger.html
 
-While the vendor recommends the server, Netways still recommends Apache and Passenger for
+While the vendor recommends the server, NETWAYS still recommends Apache and Passenger for
 being a stable solution if you encounter problems with the server.
 
 ~~~ENDSECTION~~~
-
-

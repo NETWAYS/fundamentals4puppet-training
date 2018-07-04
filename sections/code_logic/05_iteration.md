@@ -94,9 +94,16 @@ Add at least another vhost to this hash, simply use local ip addresses for this 
 ### Add an each loop based on this hash around your resources
 
 Iterate over the vhost hash with the each function to create your resources. Make sure
-to not include your resouce defaults in this loop.
+to not include your resource defaults in this loop.
 
     $ vim ~/puppet/manifests/vhost.pp
+    #$shortname = 'vhost'
+    #$fullname = "${shortname}.localdomain"
+    #$ip = '127.0.0.1'
+
+    #$confdir = '/etc/httpd'
+    #$documentroot = "/var/www/${fullname}"
+
     $vhosts.each | $shortname, $ip | {
       $fullname = "${shortname}.localdomain"
       $confdir = '/etc/httpd'

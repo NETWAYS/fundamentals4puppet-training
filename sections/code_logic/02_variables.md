@@ -208,6 +208,6 @@ Because of the facts hostname, fqdn and ipaddress you can not use these names fo
     }
     
     file { "${documentroot}/index.html":
-      ensure => file,
+      ensure  => file,
       content => '<h1>Hello World</h1>',
     }

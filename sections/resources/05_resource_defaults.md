@@ -43,7 +43,7 @@ automatically promotes a mode default of "0644" to "0755".
 * Objective:
  * Add a vhost definition to your webserver
 * Steps:
- * Set the resource default for file resources to provide owner, group and mode
+ * Set the resource defaults for file resources to provide owner, group and mode
  * Add a host entry for your vhost on your server
  * Add a configuration file for your vhost
  * Create the document root and an index file
@@ -68,13 +68,13 @@ as vhost, the default configuration will not be used any longer.
 
 ****
 
-* You will at a vhost definition to your webserver in this lab
+* You will add a vhost definition to your webserver in this lab
 
 ## Steps:
 
 ****
 
-* Set the resource default for file resources to provide owner "root", group "root" and mode "0644"
+* Set the resource defaults for file resources to provide owner "root", group "root" and mode "0644"
 * Add a host entry "vhost.localdomain" for your vhost on your server
 * Add a configuration file for your vhost creating a name based vhost
 * Create the document root "/var/www/vhost.localdomain" and an index file saying "Hello World"
@@ -86,7 +86,7 @@ Add an additional vhost for your default servername to provide different content
 
 #### Expected result:
 
-Pointing your browser to "http://vhost.localdomain" shows "Hello World"
+Pointing your browser to http://vhost.localdomain shows "Hello World".
 
 
 !SLIDE supplemental solutions
@@ -98,7 +98,7 @@ Pointing your browser to "http://vhost.localdomain" shows "Hello World"
 
 ****
 
-### Set the resource default for file resources to provide owner "root", group "root" and mode "0644"
+### Set the resource defaults for file resources to provide owner "root", group "root" and mode "0644"
 
     $ vim ~/puppet/manifests/vhost.pp
     File {
