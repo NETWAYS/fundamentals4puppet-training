@@ -7,7 +7,7 @@
 
 <pre>
 class apache (
-  Enum['running','stopped'] $ensure        = 'present',
+  Enum['running','stopped'] $ensure        = 'running',
   Boolean                   $enable        = true,
   Boolean                   $default_vhost = false,
   Hash[String, String]      $vhosts        = {},
