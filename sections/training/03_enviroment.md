@@ -21,24 +21,49 @@
 ****
 
 The laptop provided for the training is running CentOS 7 with Gnome 3 in Fallback mode.
-You can login with the unprivileged user "training" and password "netways". 
-The password for user "root" typically not required is "netways0815".
 
-For virtualization the laptop runs Virtualbox. The virtual machines are best accessed using ssh
-with the user "training" and password "netways". The user "root" has the same password"
+**Username:** training<br/>
+**Password:** netways<br/>
+**root Password:** netways0815
+
+For virtualization the laptop runs Virtualbox. The virtual machines are best accessed using ssh from your
+supplied laptop. Hostnames can be used for accessing the virtual machines.
+
+**Username:** training<br/>
+**Password:** netways<br/>
+**root Password:** netways
 
 ~~~PAGEBREAK~~~
 
-The virtual machine named "puppet.localdomain" has the Puppet Master and a Git repository
-pre-installed which will be required for later labs.
+On our virtual machines you **should**:
 
-On "agent-centos.localdomain" we will install Puppet as an agent and will use it for developing
-our puppet code, it has a clone of the Git repository allowing us to commit code and publish it
-onto the master, located in the home directory of the "training" user. For your convenience a
-link in the home directory of the "root" user does also point to this directory.
+* Work as user **training**
+* Use the workspace in `/home/training/puppet`
+* Switch only to root when necessary
 
-The last machine is "agent-debian.localdomain" which has a Puppet agent pre-installed and will
+The machine **agent-centos.localdomain** will be our first workspace and is used for:
+
+* install Puppet as an agent
+* developing Puppet code
+* commit changes to a Git repository later
+* publish the code to the Puppet master
+
+On the virtual machine named **puppet.localdomain** a Puppet Master is pre-installed and a simple Git server
+is ready to be used for later labs.
+
+The last machine is **agent-debian.localdomain** which has a Puppet agent pre-installed and will
 be used in the optional labs at the end.
 
-~~~ENDSECTION~~~
+From your training laptop you simply can SSH in to the virtual machines:
 
+    ssh agent-centos.localdomain
+    ssh puppet.localdomain
+    ssh agent-debian.localdomain
+
+If you want to do something as root, use sudo from within the virtual machines, or SSH in with the root account:
+
+    sudo some command
+    sudo -i
+    ssh root@agent-centos.localdomain
+
+~~~ENDSECTION~~~
