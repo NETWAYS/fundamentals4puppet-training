@@ -135,7 +135,7 @@ Pointing your browser to http://vhost.localdomain shows "Hello World".
     file { '/var/www/vhost.localdomain/':
       ensure => directory,
     }
-    
+
     file { '/var/www/vhost.localdomain/index.html':
       ensure => file,
       content => '<h1>Hello World</h1>',
@@ -147,7 +147,7 @@ Pointing your browser to http://vhost.localdomain shows "Hello World".
     $ sudo service httpd reload
 
 ~~~PAGEBREAK~~~
-    
+
 ### Optional: Add an additional vhost for your default servername to provide different content based on the servername
 
     $ vim ~/puppet/manifests/apache.pp
@@ -192,6 +192,6 @@ file {
 ****
 
 Puppet 4 introduced an alternative block based version allowing to set defaults
-in a fine granular manor. 
+in a fine granular manor.
 
 ~~~ENDSECTION~~~

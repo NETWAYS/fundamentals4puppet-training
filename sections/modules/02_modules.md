@@ -13,7 +13,7 @@
 ****
 
 Modules are a pre-defined structure for encapsulating related configuration which
-enables the auto-loading of classes, file-serving for templates and files and 
+enables the auto-loading of classes, file-serving for templates and files and
 auto-delivery of custom Puppet extensions. Furthermore it allows for easy sharing
 with others. for this going to work a modules should be self-contained and should
 have well defined integration points for other modules to use. It should manage
@@ -96,9 +96,9 @@ classes of the module must be named like the file providing them.
 
     # grep ^class apache/manifests/init.pp
     class apache (
-    # grep ^class apache/manifests/package.pp 
+    # grep ^class apache/manifests/package.pp
     class apache::package (
-    # grep ^class apache/manifests/mod/status.pp 
+    # grep ^class apache/manifests/mod/status.pp
     class apache::mod::status (
 
 Autoloading also works for static files served by the Puppet Master. Puppet uses its own
@@ -168,7 +168,7 @@ Move your class manifest to be your modules default class and your configuration
 to the location for static files.
 
     $ mv ~/puppet/manifests/apache.pp ~/puppet/modules/apache/manifests/init.pp
-    $ mv ~/puppet/files/httpd.conf ~/puppet/modules/apache/files/
+    $ mv ~/puppet/files/local.conf ~/puppet/modules/apache/files/
 
 ### Adjust the source of your file resource
 
@@ -177,9 +177,9 @@ because of the omitted server. If no server is given the agent will load the fil
 server it contacted for requesting a catalog.
 
     $ vim ~/puppet/modules/apache/manifests/init.pp
-    file {'httpd.conf':
+    file {'httpd local.conf':
       ...
-      source  => 'puppet:///modules/apache/httpd.conf',
+      source  => 'puppet:///modules/apache/local.conf',
     }
 
 ### Create a smoke test including your apache class
@@ -193,5 +193,5 @@ manifest defining it in the modules examples directory.
 Now you can use apply on this file but you have to provide the modulepath.
 
     $ sudo puppet apply --debug --modulepath=~/puppet/modules/ ~/puppet/modules/apache/examples/init.pp
-    Debug: /Stage[main]/Apache/Package[httpd]/before: requires File[httpd.conf]
-    Debug: /Stage[main]/Apache/File[httpd.conf]/notify: subscribes to Service[httpd]
+    Debug: /Stage[main]/Apache/Package[httpd]/before: requires File[httpd local.conf]
+    Debug: /Stage[main]/Apache/File[httpd local.conf]/notify: subscribes to Service[httpd]

@@ -49,7 +49,7 @@ the use as resource attribute.
 
     package { 'apache':
       ensure => installed,
-      name   => $::osfamily ? { 
+      name   => $::osfamily ? {
         'RedHat' => 'httpd',
         default  => 'apache2',
       }
@@ -147,7 +147,7 @@ Your manifest still works as before and is capable of handling Debian
     class apache {
       $packagename = 'httpd'
       $configdir   = '/etc/httpd'
-      $mainconfig  = "${configdir}/conf/httpd.conf"
+      $localconfig  = "${configdir}/conf.d/local.conf"
       $servicename = 'httpd'
       ...
     }
@@ -159,12 +159,12 @@ Your manifest still works as before and is capable of handling Debian
       ...
       name => $packagename,
     }
-    
-    file { 'httpd.conf':
+
+    file { 'httpd local.conf':
       ...
-      path => $mainconfig,
+      path => $localconfig,
     }
-    
+
     service { 'httpd':
       ...
       name => $servicename,
@@ -178,19 +178,20 @@ Your manifest still works as before and is capable of handling Debian
         'RedHat': {
           $packagename = 'httpd'
           $configdir   = '/etc/httpd'
-          $mainconfig  = "${configdir}/conf/httpd.conf"
           $servicename = 'httpd'
         }
         'Debian': {
           $packagename = 'apache2'
           $configdir   = '/etc/apache2'
-          $mainconfig  = "${configdir}/apache2.conf"
           $servicename = 'apache2'
         }
         default: {
           fail('Your platform is not supported')
         }
       }
+
+      $confd  = "${configdir}/conf.d"
+      $localconfig  = "${confd}/local.conf"
       ...
     }
 
@@ -201,7 +202,7 @@ Your manifest still works as before and is capable of handling Debian
 * Used to make a choice based on a truth value
 * Can use:
  * boolean value
- * conditional expressions 
+ * conditional expressions
  * regular expressions
  * chain of expressions
 
@@ -309,7 +310,7 @@ use case.
     $ vim ~/puppet/manifests/apache.pp
     class apache {
       $ensure = 'present'
-    
+
       if $ensure == 'absent' {
         $ensure_package = 'purged'
         $ensure_file    = 'absent'
@@ -331,12 +332,12 @@ use case.
       ensure => $ensure_package,
       ...
     }
-    
-    file { 'httpd.conf':
+
+    file { 'httpd local.conf':
       ensure => $ensure_file,
       ...
     }
-    
+
     service { 'httpd':
       ensure => $ensure_service,
       enable => $enable_service,
@@ -351,13 +352,13 @@ but not a typical example for common use in modules. In most public modules only
 features will also have a deactivation routine.
 
     $ vim ~/puppet/manifests/apache.pp
-    file { 'httpd.conf':
+    file { 'httpd local.conf':
       ...
       #require => Package['httpd'],
     }
-    
+
     if $ensure == "absent" {
-      Service['httpd'] -> File['httpd.conf'] -> Package['httpd']
+      Service['httpd'] -> File['httpd local.conf'] -> Package['httpd']
     } else {
-      Package['httpd'] -> File['httpd.conf'] ~> Service['httpd']
+      Package['httpd'] -> File['httpd local.conf'] ~> Service['httpd']
     }

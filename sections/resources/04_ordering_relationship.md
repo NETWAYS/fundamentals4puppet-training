@@ -38,7 +38,7 @@ explicitly.
 The picture above shows an overview of the most important implicit dependencies.
 A dependency is only created if both resources are managed by Puppet.
 
-Two more detailed examples are shown on the next sides. To find all implicit dependencies 
+Two more detailed examples are shown on the next sides. To find all implicit dependencies
 have a look on the Autorequires description of the resources on:
 https://docs.puppet.com/puppet/latest/reference/type.html
 
@@ -215,11 +215,11 @@ and stick to those pointing left to right.
  * Install and run the Apache webserver
 * Steps:
  * Ensure package "httpd" is installed
- * Manage its configuration file "/etc/httpd/conf/httpd.conf"
+ * Manage a configuration file "/etc/httpd/conf.d/local.conf", and add "ServerAdmin info@netways.de" into it
  * Enable and start the service "httpd"
  * Add dependencies to make sure it is installed before you configure it and config changes restart the service
  * Apply the manifest
- * Add the "Servername" to the configuration and apply again
+ * Add the "ServerName" to the `local.conf` file and apply again to see the service being restarted
 
 ~~~SECTION:handouts~~~
 
@@ -245,11 +245,11 @@ later after introducing the concept of classes.
 ****
 
 * Ensure package "httpd" is installed
-* Manage its configuration file "/etc/httpd/conf/httpd.conf", copy the original file to your home directory as a source
+* Manage its configuration file "/etc/httpd/conf.d/local.conf", and add "ServerAdmin info@netways.de" into it
 * Enable and start the service "httpd"
 * Add dependencies to make sure it is installed before you configure it and config changes restart the service
 * Apply the manifest
-* Add the "Servername" to the configuration and apply again to see the service being restarted
+* Add the "ServerName" to the `local.conf` file and apply again to see the service being restarted
 
 #### Expected Result:
 
@@ -274,20 +274,22 @@ Create a new manifest "apache.pp" and declare a package resource "httpd" to be i
       ensure => present,
     }
 
-### Manage its configuration file "/etc/httpd/conf/httpd.conf", copy the original file to your home directory as a source
+### Manage a configuration file "/etc/httpd/conf.d/local.conf"
 
-Copy the original configuration file to the "puppet/files" directory in your home directory as a source and then add a file resource managing "/etc/httpd/conf/httpd.conf"
-to your manifest. To get the file install the apache package manually oder run the apply command on your manifest before doing this step.
+Add a new file to the "puppet/files" directory in your home directory as a source and then add a file resource managing
+"/etc/httpd/conf.d/local.conf" to your manifest. To get the file install the apache package manually oder run the apply
+command on your manifest before doing this step.
 
-    $ cp /etc/httpd/conf/httpd.conf ~/puppet/files/
+    $ vim ~/puppet/files/local.conf
+    ServerAdmin info@netways.de
 
     $ vim ~/puppet/manifests/apache.pp
-    file { '/etc/httpd/conf/httpd.conf':
+    file { '/etc/httpd/conf.d/local.conf':
       ensure  => file,
       owner   => 'root',
       group   => 'root',
       mode    => '0644',
-      source  => '/home/training/puppet/files/httpd.conf',
+      source  => '/home/training/puppet/files/local.conf',
     }
 
 ### Enable and start the service "httpd"
@@ -309,17 +311,16 @@ would happen. Also understanding the code is easier if dependencies are explicit
     package { 'httpd':
       ...
     }
-    
-    file { '/etc/httpd/conf/httpd.conf':
+
+    file { '/etc/httpd/conf.d/local.conf':
       ...
       require => Package['httpd'],
     }
-    
+
     service { 'httpd':
       ...
-      subscribe => File['/etc/httpd/conf/httpd.conf'],
+      subscribe => File['/etc/httpd/conf.d/local.conf'],
     }
-
 
 ### Apply the manifest
 
@@ -332,8 +333,8 @@ Save the manifest and then enforce it.
 Open your copy of the configuration file and add the "Servername" directive, then apply again to if the service gets restarted
 after changing its configuration.
 
-    $ vim ~/puppet/files/httpd.conf
-    Servername agent-centos.localdomain:80
+    $ vim ~/puppet/files/local.conf
+    ServerName agent-centos.localdomain:80
 
     $ sudo puppet apply ~/puppet/manifests/apache.pp
 
@@ -434,14 +435,14 @@ This adjustment is common for services which loose information during restart bu
     $ vim ~/puppet/manifests/apache.pp
     service { 'httpd':
       ...
-      #subscribe => File['/etc/httpd/conf/httpd.conf'],
+      #subscribe => File['/etc/httpd/conf.d/local.conf'],
       restart   => '/usr/bin/systemctl reload httpd',
     }
 
 ### Change the file resource to notify the exec instead of the service
 
     $ vim ~/puppet/manifests/apache.pp
-    file { '/etc/httpd/conf/httpd.conf':
+    file { '/etc/httpd/conf.d/local.conf':
       ...
       require => Package['httpd'],
       notify  => Exec['apache-restart'],

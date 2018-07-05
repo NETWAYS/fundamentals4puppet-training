@@ -20,7 +20,7 @@ class base::freebsd inherits base::unix {
 <pre>
 class apache::ssl inherits apache {
   Service['apache'] {
-    require +> [ File['apache.pem'], File['httpd.conf'] ],
+    require +> [ File['apache.pem'], File['httpd local.conf'] ],
   }
 }
 </pre>
@@ -62,7 +62,7 @@ extended depenencies. It uses a special `+>` instead of `->`.
 
     class apache::ssl inherits apache {
       Service['apache'] {
-        require +> [ File['apache.pem'], File['httpd.conf'] ],
+        require +> [ File['apache.pem'], File['httpd local.conf'] ],
       }
     }
 
@@ -146,7 +146,7 @@ An extended version of the example above:
     }
 
 ~~~PAGEBREAK~~~
-    
+
     class apache (
       $httpd_user    = $apache::params::httpd_user,
       $httpd_group   = $apache::params::httpd_group,
@@ -156,16 +156,16 @@ An extended version of the example above:
       $httpd_confdir = $apache::params::httpd_confdir,
       $httpd_docroot = $apache::params::httpd_docroot,
     ) inherits apache::params {
-    
+
       file { $httpd_docroot:
         ensure => directory,
       }
-    
+
       file { "${httpd_docroot}/index.html":
         ensure  => file,
         content => template('apache/index.html.erb'),
       }
-    
+
       apache::vhost { $::fqdn:
         docroot => $httpd_docroot,
       }
@@ -234,19 +234,19 @@ You need to add all the variables to your main class's parameter list.
         'RedHat': {
           $packagename = 'httpd'
           $configdir   = '/etc/httpd'
-          $mainconfig  = "${configdir}/conf/httpd.conf"
+          $confd  = "${configdir}/conf.d"
           $servicename = 'httpd'
           $ssl         =  true
         }
         'Debian': {
           $packagename = 'apache2'
           $configdir   = '/etc/apache2'
-          $main_config = "${configdir}/apache2.conf"
+          $confd = "${configdir}/conf.d"
           $servicename = 'apache2'
           $ssl         =  false
         }
-	default: {
-	  fail('Your platform is not supported.')
+        default: {
+          fail('Your platform is not supported.')
         }
       }
     }
