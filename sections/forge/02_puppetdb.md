@@ -49,7 +49,9 @@ as backend.
 
 * Install the PuppetDB module
 
-The agent on the master runs in a separate environment "master"
+The agent on the master runs in a separate environment **master**
+
+We will explicitly avoid touching environment **production** here.
 
 * Assign it to your master
 
@@ -75,9 +77,9 @@ You can access the dashboard, pointing your browser to http://192.168.56.101:808
 
 ### Install the PuppetDB module
 
-On the puppet master use the puppet module tool to install "puppetlabs-puppetdb" into environment "master".
+On the puppet master use the puppet module tool to install "puppetlabs-puppetdb" into environment **master**.
 
-    $ sudo puppet module install puppetlabs-puppetdb --modulepath /etc/puppetlabs/code/modules
+    $ sudo puppet module install puppetlabs-puppetdb --modulepath /etc/puppetlabs/code/environments/master/modules
 
 ### Assign it to your master
 
