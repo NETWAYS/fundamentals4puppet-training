@@ -5,7 +5,8 @@
 * It is used by Puppet to gather information about the node
 * You can also run it on command line to list facts
 
-    <pre>
+<!-- break between ul and code -->
+
     augeas => {
       version => "1.4.0"
     }
@@ -25,7 +26,6 @@
     }
     timezone => UTC
     virtual => kvm
-    </pre>
 
 ~~~SECTION:handouts~~~
 
@@ -34,7 +34,7 @@
 ~~~PAGEBREAK~~~
 
 Facter returns key value pairs named facts. In older versions these were simple string representations, newer versions
-also structured facts are possible which means a array or hash is returned. 
+also structured facts are possible which means a array or hash is returned.
 
 The facts are used as Puppet's inventory tool and are generated before requesting a catalog from the master. The master
 can use facts in conditionals or templates during catalog compilation but it is impossible to change its values during
