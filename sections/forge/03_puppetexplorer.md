@@ -72,16 +72,18 @@ You can access the webinterface, pointing your browser to https://192.168.56.101
 
 ### Install the Puppet Explorer module
 
-On the puppet master use the puppet module tool to install "spotify-puppetexplorer" and "puppetlabs-apache" into environment "master".
-The apache module is only an optional dependency so not automatically installed.
+On the puppet master use the puppet module tool to install "spotify-puppetexplorer" and "puppetlabs-apache" into
+environment "master". The apache module is only an optional dependency so not automatically installed.
 
-    $ sudo puppet module install spotify-puppetexplorer -i /etc/puppetlabs/code/modules
-    $ sudo puppet module install puppetlabs-apache -i /etc/puppetlabs/code/modules
+**Note:** PuppetExplorer was first developed by the team at Spotify, and is now maintained by GitHub user "dalen".
+
+    $ sudo puppet module install spotify-puppetexplorer -i /etc/puppetlabs/code/environments/master/modules
+    $ sudo puppet module install puppetlabs-apache -i /etc/puppetlabs/code/environments/master/modules
 
 ### Assign it to your master
 
-Puppet Explorer simply proxies the query issued to the PuppetDB using Apache. PuppetDB 4.x also introduced a breaking change by moving some query location,
-compatibilty for this change can be restored by a rewrite rule (https://github.com/spotify/puppetexplorer/issues/49).
+Puppet Explorer simply proxies the query issued to the PuppetDB using Apache. PuppetDB 4.x also introduced a breaking
+change by moving some query location, compatibilty for this change can be restored by a rewrite rule (https://github.com/dalen/puppetexplorer/issues/49).
 
     $ sudo vim /etc/puppetlabs/code/environments/master/manifests/site.pp
     node 'puppet.localdomain' {
@@ -93,14 +95,13 @@ compatibilty for this change can be restored by a rewrite rule (https://github.c
           { 'path' => '/api/metrics', 'url' => 'http://192.168.56.101:8080/metrics' }
         ],
         vhost_options => {
-          rewrites  => [ { rewrite_rule => ['^/api/metrics/v1/mbeans/puppetlabs.puppetdb.query.population:type=default,name=(.*)$  https://%{HTTP_HOST}/api/metrics/v1/mbeans/puppetlabs.puppetdb.population:name=$1 [R=301,L]'] } ], 
+          rewrites  => [ { rewrite_rule => ['^/api/metrics/v1/mbeans/puppetlabs.puppetdb.query.population:type=default,name=(.*)$  https://%{HTTP_HOST}/api/metrics/v1/mbeans/puppetlabs.puppetdb.population:name=$1 [R=301,L]'] } ],
         },
       }
     }
 
-Instead of typing all the configuration use the documentation of the module and the provided issue to copy most of it.
+Instead of typing all the configuration **use the documentation of the module and the provided issue** to copy most of it.
 
 ### Run the puppet agent to install it
 
     $ sudo puppet agent -t
-
