@@ -142,7 +142,7 @@ title for the shortname of your vhost.
       String $shortname    = $title,
       String $fullname     = "${shortname}.localdomain",
       String $confdir      = '/etc/httpd',
-      String $documentroot = "/var/www/$fullname",
+      String $documentroot = "/var/www/${fullname}",
     ) {
       ...
     }
@@ -161,8 +161,8 @@ are found through autoloading.
     #content => template('/home/training/puppet/templates/vhost.conf.erb'),
     content => template('apache/vhost.conf.erb'),
     ...
-    #content  => epp('/home/training/puppet/templates/index.html.epp', { 'from' => "$fullname" }),
-    content  => epp('apache/index.html.epp', { 'from' => "$fullname" }),
+    #content  => epp('/home/training/puppet/templates/index.html.epp', { 'from' => "${fullname}" }),
+    content  => epp('apache/index.html.epp', { 'from' => "${fullname}" }),
     ...
 
 ### Add a smoke test to apply multiple vhosts
@@ -194,7 +194,7 @@ Add a notify to your defined resource vhost to restart the service on changes to
 This requires the smoke test to also include the main class.
 
     $ vim ~/puppet/modules/apache/manifests/vhost.pp
-    file { "$confdir/conf.d/$shortname.conf":
+    file { "${confdir}/conf.d/$shortname.conf":
       ...
       notify => Service['httpd'],
     }
