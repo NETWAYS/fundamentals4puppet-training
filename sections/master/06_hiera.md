@@ -33,6 +33,10 @@ classic global hiera, environment data and module data.
  * MySQL/PostgreSQL - Database lookup
  * LDAP and more
 
+
+!SLIDE smbullets small
+# Hiera Configuration Version 5
+
 <pre>
 ---
 version: 5
@@ -47,6 +51,7 @@ hierarchy:
       - "%{::domain}.yaml"
       - "defaults.yaml"
 </pre>
+
 
 ~~~SECTION:handouts~~~
 
