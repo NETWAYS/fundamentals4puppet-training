@@ -89,16 +89,16 @@ the most cases by using `include` or `contain` and some class parameters.
 class apache::params {
   case $::osfamily {
     'RedHat': {
-       $httpd_user    = 'apache'
+       $hhtpd_user    = 'apache'
     }
     'Debian': {
-       $httpd_user    = 'www-data'
+       $hhtpd_user    = 'www-data'
     }
   }
 }
 
 class apache (
-  $http_user = $apache::params::httpd_user,
+  $http_user = $apache::params::user,
 ) inherits apache::params {
   ...
 }
@@ -234,14 +234,14 @@ You need to add all the variables to your main class's parameter list.
         'RedHat': {
           $packagename = 'httpd'
           $configdir   = '/etc/httpd'
-          $confd  = "${configdir}/conf.d"
+          $confd       = "${configdir}/conf.d"
           $servicename = 'httpd'
           $ssl         =  true
         }
         'Debian': {
           $packagename = 'apache2'
           $configdir   = '/etc/apache2'
-          $confd = "${configdir}/conf.d"
+          $confd       = "${configdir}/conf.d"
           $servicename = 'apache2'
           $ssl         =  false
         }
