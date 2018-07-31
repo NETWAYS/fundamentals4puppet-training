@@ -76,7 +76,7 @@ Vagrant.configure("2") do |config|
       ln -s /usr/bin/vim.tiny /usr/bin/vim
       dpkg-query --show git 1>/dev/null || apt-get -y install git
     SHELL
-    agent.vm.provision :shell, :path => 'scripts/agents.sh', :args => 'git-init'
+    agent.vm.provision :shell, :path => 'scripts/agents.sh'
   end
 
   config.vm.define "agent-debian" do |agent|
