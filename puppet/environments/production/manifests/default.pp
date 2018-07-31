@@ -1,5 +1,13 @@
 node 'puppet.localdomain' {
 
+  class { 'yum':
+    keep_kernel_devel => false,
+    clean_old_kernels => true,
+    config_options => {
+      deltarpm => 0,
+    }
+  }
+
   file { '/etc/systemd/system/puppetmaster.service':
     ensure => file,
     mode   => '0755',
@@ -48,7 +56,7 @@ WantedBy=multi-user.target'
     server                        => true,
     server_implementation         => 'master',
     server_package                => 'puppetserver',
-    dns_alt_names                 => [ 'puppet' ],
+#    dns_alt_names                 => [ 'puppet' ],
     server_passenger              => false,
     server_service_fallback       => true,
     agent                         => true,
@@ -56,8 +64,8 @@ WantedBy=multi-user.target'
     server_external_nodes         => '',
     vardir                        => '/opt/puppetlabs/server/data/puppetserver',
     server_directory_environments => true,
-    server_environments           => [],
-    server_dynamic_environments   => true,
+    server_dynamic_environments   => false,
+    server_environments           => [ 'production' ],
     server_reports                => 'store',
     server_git_repo               => true,
     server_environments_owner     => 'git',
