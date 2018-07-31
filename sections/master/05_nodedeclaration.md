@@ -9,19 +9,17 @@
  * Fuzzy name matching
  * Default
 
-<pre>
-node 'www.example.com' {
-  include apache
-}
-
-node /\.example\.com$/ {
-  include base
-}
-
-node default {
-  notice('Node not configured')
-}
-</pre>
+   <pre>
+   node 'www.example.com' {
+     include apache
+   }<br>
+   node /\.example\.com$/ {
+     include base
+   }<br>
+   node default {
+     notice('Node not configured')
+   }
+   </pre>
 
 ~~~SECTION:handouts~~~
 

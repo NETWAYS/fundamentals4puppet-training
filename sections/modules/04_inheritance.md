@@ -7,23 +7,21 @@
  * Allows to extend the class, override and append existing values
  * **But** can also be handled with include and parameters
 
-<pre>
-class base::freebsd inherits base::unix {
-  File['/etc/passwd'] {
-    group => 'wheel',
-  }
-  File['/etc/shadow'] {
-    group => 'wheel',
-  }
-}
-</pre>
-<pre>
-class apache::ssl inherits apache {
-  Service['apache'] {
-    require +> [ File['apache.pem'], File['httpd local.conf'] ],
-  }
-}
-</pre>
+   <pre>
+   class base::freebsd inherits base::unix {
+     File['/etc/passwd'] {
+       group => 'wheel',
+     }
+     File['/etc/shadow'] {
+       group => 'wheel',
+     }
+   }<br>
+   class apache::ssl inherits apache {
+     Service['apache'] {
+       require +> [ File['apache.pem'], File['httpd local.conf'] ],
+     }
+   }
+   </pre>
 
 ~~~SECTION:handouts~~~
 
@@ -85,24 +83,23 @@ the most cases by using `include` or `contain` and some class parameters.
  * all parameters are set to default provided by params
 * Only style guide conform use of inheritance
 
-<pre>
-class apache::params {
-  case $::osfamily {
-    'RedHat': {
-       $hhtpd_user    = 'apache'
-    }
-    'Debian': {
-       $hhtpd_user    = 'www-data'
-    }
-  }
-}
-
-class apache (
-  $http_user = $apache::params::user,
-) inherits apache::params {
-  ...
-}
-</pre>
+   <pre>
+   class apache::params {
+     case $::osfamily {
+       'RedHat': {
+          $hhtpd_user    = 'apache'
+       }
+       'Debian': {
+          $hhtpd_user    = 'www-data'
+       }
+     }
+   }<br>
+   class apache (
+     $http_user = $apache::params::user,
+   ) inherits apache::params {
+     ...
+   }
+   </pre>
 
 ~~~SECTION:handouts~~~
 

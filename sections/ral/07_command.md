@@ -9,10 +9,8 @@
     # puppet resource package vim-enhanced
     package { 'vim-enhanced':
       ensure => 'purged',
-    }
-
-    # puppet resource package vim-enhanced \
-      ensure=present
+    }<br>
+    # puppet resource package vim-enhanced ensure=present
     Notice: /Package[vim-enhanced]/ensure: created
     package { 'vim-enhanced':
       ensure => '7.4.160-1.el7',

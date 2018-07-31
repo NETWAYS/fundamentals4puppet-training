@@ -3,19 +3,16 @@
 
 * Puppet allows you to declare resource defaults
 
-<pre>
-Type {
-  attribute => 'value',
-}
-</pre>
-
-<pre>
-File {
-  owner => 'root',
-  group => 'root',
-  mode  => '0644',
-}
-</pre>
+   <pre>
+   Type {
+     attribute => 'value',
+   }<br>
+   File {
+     owner => 'root',
+     group => 'root',
+     mode  => '0644',
+   }
+   </pre>
 
 * For directories Puppet promotes a mode default of "0644" to "0755"
 
@@ -171,27 +168,27 @@ Pointing your browser to http://vhost.localdomain shows "Hello World".
 
 * Puppet 4 introduced an alternative block based version
 
-<pre>
-file {
-  default:
-    mode   => '0600',
-    owner  => 'root',
-    group  => 'root',
-    ensure => file,
-  ;
-  '/etc/ssh_host_key':
-  ;
-  '/etc/ssh_host_dsa_key.pub':
-    mode => '0644',
-  ;
-}
-</pre>
+   <pre>
+   file {
+     default:
+       mode   => '0600',
+       owner  => 'root',
+       group  => 'root',
+       ensure => file,
+     ;
+     '/etc/ssh_host_key':
+     ;
+     '/etc/ssh_host_dsa_key.pub':
+       mode => '0644',
+     ;
+   }
+   </pre>
 
 ~~~SECTION:handouts~~~
 
 ****
 
-Puppet 4 introduced an alternative block based version allowing to set defaults
+Since Puppet 4 introduced an alternative block based version allowing to set defaults
 in a fine granular manor.
 
 ~~~ENDSECTION~~~

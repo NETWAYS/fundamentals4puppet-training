@@ -9,10 +9,7 @@ type { 'title':
   attribute         => 'value',
   other_attribute   => $variable,
   another_attribute => "${another_var}.txt",
-}
-</pre>
-
-<pre>
+}<br>
 file { '/tmp/test':
   ensure  => file,
   owner   => 'root',

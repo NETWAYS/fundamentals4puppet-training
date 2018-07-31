@@ -5,27 +5,27 @@
 * It is used by Puppet to gather information about the node
 * You can also run it on command line to list facts
 
-<!-- break between ul and code -->
-
-    augeas => {
-      version => "1.4.0"
-    }
-    disks => {
-      vda => {
-        size => "10.00 GiB",
-        size_bytes => 10737418240,
-        vendor => "0x1af4"
-      }
-    }
-    ...
-    system_uptime => {
-      days => 0,
-      hours => 2,
-      seconds => 8378,
-      uptime => "2:19 hours"
-    }
-    timezone => UTC
-    virtual => kvm
+   <pre>
+   augeas => {
+     version => "1.4.0"
+   }
+   disks => {
+     vda => {
+       size => "10.00 GiB",
+       size_bytes => 10737418240,
+       vendor => "0x1af4"
+     }
+   }
+   ...
+   system_uptime => {
+     days => 0,
+     hours => 2,
+     seconds => 8378,
+     uptime => "2:19 hours"
+   }
+   timezone => UTC
+   virtual => kvm
+   </pre>
 
 ~~~SECTION:handouts~~~
 

@@ -5,16 +5,16 @@
 * The parameters can have a defined data type with Puppet 4
 * Also with parameters a class is still a singleton
 
-<pre>
-class apache (
-  Enum['running','stopped'] $ensure        = 'running',
-  Boolean                   $enable        = true,
-  Boolean                   $default_vhost = false,
-  Hash[String, String]      $vhosts        = {},
-) {
-  ...
-}
-</pre>
+   <pre>
+   class apache (
+     Enum['running','stopped'] $ensure        = 'running',
+     Boolean                   $enable        = true,
+     Boolean                   $default_vhost = false,
+     Hash[String, String]      $vhosts        = {},
+   ) {
+     ...
+   }
+   </pre>
 
 ~~~SECTION:handouts~~~
 
@@ -38,12 +38,12 @@ sets.
 * `include` function takes a class with all its defaults
 * you can declare a class like every resource with parameters
 
-<pre>
-class {'apache':
-  ensure        => running,
-  default_vhost => true,
-}
-</pre>
+   <pre>
+   class {'apache':
+     ensure        => running,
+     default_vhost => true,
+   }
+   </pre>
 
 ~~~SECTION:handouts~~~
 

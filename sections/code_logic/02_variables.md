@@ -3,9 +3,7 @@
 
 * Syntax
 <pre>
-$variable = 'value'
-</pre>
-<pre>
+$variable = 'value'<br>
 $httpd_confdir = '/etc/httpd/conf.d'
 </pre>
 * Can be used in expressions, functions and resource attributes

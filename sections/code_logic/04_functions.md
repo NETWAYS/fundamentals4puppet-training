@@ -73,17 +73,15 @@ file. But for readability you should avoid this at least for bigger templates.
 
 * Simple textfile including some Ruby code
 
-<pre>
-&lt;%# Comment not printed in file -%&gt;
-
-&lt;% if @variable == true -%&gt;
-Print this &lt;%= @variable %&gt;
-&lt;% end -%&gt;
-
-&lt;% @values.each do |value| -%&gt;
-Value is &lt;%= value %&gt;
-&lt;% end -%&gt;
-</pre>
+   <pre>
+   &lt;%# Comment not printed in file -%&gt;<br>
+   &lt;% if @variable == true -%&gt;
+   Print this &lt;%= @variable %&gt;
+   &lt;% end -%&gt;<br>
+   &lt;% @values.each do |value| -%&gt;
+   Value is &lt;%= value %&gt;
+   &lt;% end -%&gt;
+   </pre>
 
 
 ~~~SECTION:handouts~~~
@@ -171,20 +169,18 @@ Make sure to comment the source attribute because it is mutually exclusive with 
 
 * Simple textfile including some Ruby code
 
-<pre>
-&lt;%- | Boolean $variable = true,
-      Array   $values
-| -%&gt;
-&lt;%# Comment not printed in file -%&gt;
-
-&lt;% if $variable == true { -%&gt;
-Print this &lt;%= $variable %&gt;
-&lt;% } -%&gt;
-
-&lt;% $values.each |value| { -%&gt;
-Value is &lt;%= value %&gt;
-&lt;% } -%&gt;
-</pre>
+   <pre>
+   &lt;%- | Boolean $variable = true,
+         Array   $values
+   | -%&gt;
+   &lt;%# Comment not printed in file -%&gt;<br>
+   &lt;% if $variable == true { -%&gt;
+   Print this &lt;%= $variable %&gt;
+   &lt;% } -%&gt;<br>
+   &lt;% $values.each |value| { -%&gt;
+   Value is &lt;%= value %&gt;
+   &lt;% } -%&gt;
+   </pre>
 
 ~~~SECTION:handouts~~~
 

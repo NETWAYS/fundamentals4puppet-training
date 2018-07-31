@@ -9,16 +9,15 @@
  * **reduce** - combine values to a new data structure
  * **with** - create a private code block (no real iteration)
 
-<pre>
-$binaries = ['facter', 'hiera', 'mco', 'puppet', 'puppetserver']
-
-$binaries.each |String $binary| {
-  file {"/usr/bin/${binary}":
-    ensure => link,
-    target => "/opt/puppetlabs/bin/${binary}",
-  }
-}
-</pre>
+   <pre>
+   $binaries = ['facter', 'hiera', 'mco', 'puppet', 'puppetserver']<br>
+   $binaries.each |String $binary| {
+     file {"/usr/bin/${binary}":
+       ensure => link,
+       target => "/opt/puppetlabs/bin/${binary}",
+     }
+   }
+   </pre>
 
 ~~~SECTION:handouts~~~
 

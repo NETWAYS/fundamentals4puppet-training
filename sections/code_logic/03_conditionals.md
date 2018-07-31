@@ -26,17 +26,16 @@ logic flow of your manifest.
 
 * Good for assigning conditional values to variables
 
-<pre>
-$apache_package = $::osfamily ? {
-  'RedHat' => 'httpd',
-  default  => 'apache2',
-}
-
-package { 'apache':
-  ensure => installed,
-  name   => $apache_package,
-}
-</pre>
+   <pre>
+   $apache_package = $::osfamily ? {
+     'RedHat' => 'httpd',
+     default  => 'apache2',
+   }<br>
+   package { 'apache':
+     ensure => installed,
+     name   => $apache_package,
+   }
+   </pre>
 
 ~~~SECTION:handouts~~~
 
@@ -69,18 +68,18 @@ a default match if you do not explicitly want Puppet to fail in the case no matc
  * setting multiple variables at once
  * choosing different branches of code
 
-<pre>
-case $::osfamily {
-  'RedHat': {
-    $apache_package = 'httpd'
-    $apache_confdir = '/etc/httpd'
-  }
-  default: {
-    $apache_package = 'apache2'
-    $apache_confdir = '/etc/apache2'
-  }
-}
-</pre>
+   <pre>
+   case $::osfamily {
+     'RedHat': {
+       $apache_package = 'httpd'
+       $apache_confdir = '/etc/httpd'
+     }
+     default: {
+       $apache_package = 'apache2'
+       $apache_confdir = '/etc/apache2'
+     }
+   }
+   </pre>
 
 ~~~SECTION:handouts~~~
 
@@ -206,19 +205,19 @@ Your manifest still works as before and is capable of handling Debian
  * regular expressions
  * chain of expressions
 
-<pre>
-if $ensure == 'present' or $ensure == 'installed' {
-  package { 'telnet':
-    ensure => present,
-  }
-} elsif $ensure =~ /^(absent|purged)$/ {
-  package { 'telnet':
-    ensure => purged,
-  }
-} else {
-  fail("${ensure} is not valid")
-}
-</pre>
+   <pre>
+   if $ensure == 'present' or $ensure == 'installed' {
+     package { 'telnet':
+       ensure => present,
+     }
+   } elsif $ensure =~ /^(absent|purged)$/ {
+     package { 'telnet':
+       ensure => purged,
+     }
+   } else {
+     fail("${ensure} is not valid")
+   }
+   </pre>
 
 ~~~SECTION:handouts~~~
 
@@ -240,17 +239,17 @@ It can use additional expressions in an `elsif` and an `else` for false expressi
 * Reversed if statement
 * No elsif clause possible
 
-<pre>
-unless $ensure =~ /^(absent|purged)$/ {
-  package { 'telnet':
-    ensure => present,
-  }
-} else {
-  package { 'telnet':
-    ensure => purged,
-  }
-}
-</pre>
+   <pre>
+   unless $ensure =~ /\^\(absent|purged\)$/ {
+     package { 'telnet':
+       ensure => present,
+     }
+   } else {
+     package { 'telnet':
+       ensure => purged,
+     }
+   }
+   </pre>
 
 ~~~SECTION:handouts~~~
 

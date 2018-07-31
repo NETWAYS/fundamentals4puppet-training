@@ -3,27 +3,25 @@
 
 * Classes define a collection of resources
 
-<pre>
-class ssh {
-  package  { 'openssh':
-    ensure => present,
-  }
-
-  file { '/etc/ssh/sshd_config':
-    ensure  => file,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
-    require => Package['openssh'],
-  }
-
-  service { 'sshd':
-    ensure  => running,
-    enable  => true,
-    require => File['/etc/ssh/sshd_config'],
-  }
-}
-</pre>
+   <pre>
+   class ssh {
+     package  { 'openssh':
+       ensure => present,
+     }<br>
+     file { '/etc/ssh/sshd_config':
+       ensure  => file,
+       owner   => 'root',
+       group   => 'root',
+       mode    => '0644',
+       require => Package['openssh'],
+     }<br>
+     service { 'sshd':
+       ensure  => running,
+       enable  => true,
+       require => File['/etc/ssh/sshd_config'],
+     }
+   }
+   </pre>
 
 ~~~SECTION:handouts~~~
 

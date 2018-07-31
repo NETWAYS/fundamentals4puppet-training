@@ -4,25 +4,25 @@
 * Very similar to parameterized classes
 * But can be used multiple times
 
-<pre>
-define apache::vhost (
-    $docroot,
-    $port       = '80',
-    $priority   = '10',
-    $options    = 'Indexes MultiViews',
-    $vhost_name = $title,
-    $servername = $title,
- ) {
-  file { "/etc/httpd/conf.d/${title}.conf":
-    ensure  => file,
-    owner   => 'apache',
-    group   => 'apache',
-    mode    => '0644',
-    content => template('apache/vhost.conf.erb'),
-    notify  => Service['httpd'],
-  }
-}
-</pre>
+   <pre>
+   define apache::vhost (
+       $docroot,
+       $port       = '80',
+       $priority   = '10',
+       $options    = 'Indexes MultiViews',
+       $vhost_name = $title,
+       $servername = $title,
+    ) {
+     file { "/etc/httpd/conf.d/${title}.conf":
+       ensure  => file,
+       owner   => 'apache',
+       group   => 'apache',
+       mode    => '0644',
+       content => template('apache/vhost.conf.erb'),
+       notify  => Service['httpd'],
+     }
+   }
+   </pre>
 
 ~~~SECTION:handouts~~~
 

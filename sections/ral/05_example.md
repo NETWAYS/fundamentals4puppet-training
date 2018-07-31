@@ -1,5 +1,5 @@
 !SLIDE smbullets small
-# Example _managing user_
+# Example managing user
 
 * Managing a user without Puppet means managing:
  * Existence of user and attributes
@@ -39,22 +39,22 @@ multiple platforms it increases complexity and limits options.
 
 
 !SLIDE smbullets small
-# Example _managing user_
+# Example managing user
 
 * The same task with Puppet
  * Describe the user
  * Enforce with Puppet
 
-    <pre>
-    user { 'icinga':
-      ensure     => present,
-      gid        => 'icinga',
-      groups     => ['icingacmd'],
-      home       => '/var/spool/icinga',
-      shell      => '/sbin/nologin',
-      managehome => true,
-    }
-    </pre>
+   <pre>
+   user { 'icinga':
+     ensure     => present,
+     gid        => 'icinga',
+     groups     => ['icingacmd'],
+     home       => '/var/spool/icinga',
+     shell      => '/sbin/nologin',
+     managehome => true,
+   }
+   </pre>
 
 ~~~SECTION:handouts~~~
 

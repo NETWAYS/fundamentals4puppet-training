@@ -159,10 +159,7 @@ refresh than on a normal run or can be configured to run only on refresh.
 Allows to reference other managed resources
 
 <pre>
-Type['title']
-</pre>
-
-<pre>
+Type['title']<br>
 Service['sshd']
 </pre>
 
@@ -350,12 +347,13 @@ after changing its configuration.
  * refreshonly
 * Use full path or provide path as attribute
 
-<!-- -->
-    exec { 'command':
-      path        => '/usr/sbin/:/sbin/',
-      refreshonly => true,
-      timeout     => 60,
-    }
+   <pre>
+   exec { 'command':
+     path        => '/usr/sbin/:/sbin/',
+     refreshonly => true,
+     timeout     => 60,
+   }
+   </pre>
 
 ~~~SECTION:handouts~~~
 
