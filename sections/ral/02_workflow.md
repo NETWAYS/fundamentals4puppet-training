@@ -12,9 +12,9 @@
 
 ****
 
-The picture above shows the workflow of a Puppet agent run.
-
 ~~~PAGEBREAK~~~
+
+The picture above shows the workflow of a Puppet agent run.
 
 1. The Puppet agent tells the master information about itself collected by a tool called Facter.
 1. The Puppet master uses this information to compile a catalog of the intended configuration and sends it back to the agent.

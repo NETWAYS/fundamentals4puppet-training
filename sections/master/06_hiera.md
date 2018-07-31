@@ -71,8 +71,6 @@ lookup function.
 The new lookup function has an options hash to configure the search and merge behavoir.
 See https://docs.puppet.com/puppet/4.9/hiera_merging.html.
 
-~~~PAGEBREAK~~~
-
 The automatic lookup uses the namespace to find a variable, for example parameter
 manage_service of module apache has to be apache::manage_service for the automatic lookup.
 

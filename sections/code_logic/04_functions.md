@@ -20,8 +20,6 @@ Puppet allows to integrate functions into your manifests which will be executed 
 Statements can execute an action like *fail* which will fail catalog compilation with the provided message which is
 useful as default in case statements for better failing than providing wrong parameters for an unsupported case.
 
-~~~PAGEBREAK~~~
-
 Rvalue functions return a value like the *template* function which takes an erb template and returns a string or
 *versioncmp* which takes two version and returns "-1" if the first one is less, "0" if both are equal or "1" if
 the first one is greater.
@@ -55,8 +53,6 @@ containing dynamic content.
 The *template* function exists in all versions of Puppet and uses Embedded Ruby (erb) for the dynamic parts.
 Using the erb syntax you can access all variables available in the scope. The *template* function also can handle
 multiple templates which will be concatenated.
-
-~~~PAGEBREAK~~~
 
 The *epp* function is only available in Puppet 4 (or with the future parser in some older versions) and uses
 Embedded Puppet (epp) instead of Embedded Ruby. Furthermore it does only use the parameters which are passed to it

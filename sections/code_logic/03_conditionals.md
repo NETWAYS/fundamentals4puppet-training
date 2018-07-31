@@ -210,7 +210,7 @@ Your manifest still works as before and is capable of handling Debian
      package { 'telnet':
        ensure => present,
      }
-   } elsif $ensure =~ /^(absent|purged)$/ {
+   } elsif $ensure =~ /\^\(absent|purged\)$/ {
      package { 'telnet':
        ensure => purged,
      }
@@ -342,6 +342,8 @@ use case.
       enable => $enable_service,
       ...
     }
+
+~~~PAGEBREAK~~~
 
 ### Adjust the dependency chain based on "ensure" to bring also purging in correct order
 

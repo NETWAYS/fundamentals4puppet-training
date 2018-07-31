@@ -27,8 +27,6 @@ Puppet includes in its installation some core resource types. Most of those are 
 types like user, group, file, package or service, but some are very specific like the Nagios
 objects or Solaris zones, zfs and zpool.
 
-~~~PAGEBREAK~~~
-
 Additional ones can be provided by modules like file_line from puppetlabs/stdlib, ini_setting
 from puppetlabs/inifile, mysql_database from puppetlabs/mysql and vcsrepo from puppetlabs/vcsrepo.
 

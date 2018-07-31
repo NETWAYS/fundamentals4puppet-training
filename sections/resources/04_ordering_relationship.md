@@ -31,12 +31,15 @@ explicitly.
 
 <center><img src="./_images/implicit_dependencies.png" style="width: 480px; height: 295px;" alt="Implicit Dependencies"></center>
 
+
 ~~~SECTION:handouts~~~
 
 ****
 
 The picture above shows an overview of the most important implicit dependencies.
 A dependency is only created if both resources are managed by Puppet.
+
+~~~PAGEBREAK~~~
 
 Two more detailed examples are shown on the next sides. To find all implicit dependencies
 have a look on the Autorequires description of the resources on:
@@ -54,6 +57,7 @@ https://docs.puppet.com/puppet/latest/reference/type.html
 # Implicit Dependencies - User
 
 <center><img src="./_images/implicit_dependencies_user.png" style="width: 480px; height: 269px;" alt="Implicit Dependencies - User"></center>
+
 
 ~~~SECTION:handouts~~~
 
@@ -77,6 +81,7 @@ on their configured user.
 
 <center><img src="./_images/implicit_dependencies_exec.png" style="width: 480px; height: 251px;" alt="Implicit Dependencies - Exec"></center>
 
+
 ~~~SECTION:handouts~~~
 
 ****
@@ -98,6 +103,7 @@ as working directory, the user and group which are used to execute the command.
 * Refresh Events:
  * *subscribe* - if reference is changed refresh this resource
  * *notify* - if this resource is changed refresh the reference
+
 
 ~~~SECTION:handouts~~~
 
@@ -121,6 +127,7 @@ Syntax examples will be shown on the next pages.
 
 <center><img src="./_images/explicit_dependencies_ordering.png" style="width: 450px; height: 169px;" alt="Explicit Dependencies - Ordering"></center>
 
+
 ~~~SECTION:handouts~~~
 
 ****
@@ -140,6 +147,7 @@ in a installation of the package "openssh-server" before deploying the configura
 # Explicit Dependencies - Refresh
 
 <center><img src="./_images/explicit_dependencies_refresh.png" style="width: 450px; height: 169px;" alt="Explicit Dependencies - Refresh"></center>
+
 
 ~~~SECTION:handouts~~~
 
@@ -188,6 +196,7 @@ The syntax schema is the resource type as uppercase and the title in square brac
  * *subscribe*: File['sshd_config'] **<~** Service['sshd']
 * For readability use *before* (**->**) and *notify* (**~>**)!
 
+
 ~~~SECTION:handouts~~~
 
 ****
@@ -218,9 +227,12 @@ and stick to those pointing left to right.
  * Apply the manifest
  * Add the "ServerName" to the `local.conf` file and apply again to see the service being restarted
 
+
 ~~~SECTION:handouts~~~
 
 ****
+
+~~~PAGEBREAK~~~
 
 This design of Puppet code is known as Package-File-Service pattern. If a service depends on multiple files
 they are typically grouped in a separate class and dependencies are enforced on this level. We will do this
@@ -355,6 +367,7 @@ after changing its configuration.
    }
    </pre>
 
+
 ~~~SECTION:handouts~~~
 
 ****
@@ -381,6 +394,7 @@ The command has to be defined with the full path or the attribute "path" has to 
  * Change the service resource to reload instead of restart
  * Change the file resource to notify the exec instead of the service
  * Apply the manifest
+
 
 ~~~SECTION:handouts~~~
 

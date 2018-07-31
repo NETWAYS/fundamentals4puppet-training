@@ -12,6 +12,7 @@ infrastructure is covered.
 
 The material is based on Puppet 5.
 
+
 ~~~SECTION:handouts~~~
 
 ****
@@ -21,12 +22,12 @@ of Puppet modules and development from local prototype to deployment on Puppet M
 usage of modules provided by the Puppet forge and adding a graphical interface for monitoring the 
 infrastructure is covered.
 
+~~~PAGEBREAK~~~
+
 ## Puppet Open Source
 
 This chapter will cover the concept, architecture and functionality behind Puppet and Facter. It will
 also show the difference between the Open Source and Enterprise version.
-
-~~~PAGEBREAK~~~
 
 ## Modules and Classes
 

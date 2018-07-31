@@ -143,8 +143,6 @@ Pointing your browser to http://vhost.localdomain shows "Hello World".
     $ sudo puppet apply ~/puppet/manifests/vhost.pp
     $ sudo service httpd reload
 
-~~~PAGEBREAK~~~
-
 ### Optional: Add an additional vhost for your default servername to provide different content based on the servername
 
     $ vim ~/puppet/manifests/apache.pp

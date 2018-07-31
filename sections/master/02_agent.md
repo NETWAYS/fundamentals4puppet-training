@@ -18,6 +18,8 @@ configuration file. If not explicitly configured it will search
 for an DNS service record and if not found falls back to use a
 server puppet with the same domain as the agent.
 
+~~~PAGEBREAK~~~
+
 On its run the agent will download the certificate authority's 
 certificate and create a certificate request and send it to the
 master. On the master you have to sign the request and the agent

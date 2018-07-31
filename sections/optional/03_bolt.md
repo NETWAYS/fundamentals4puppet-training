@@ -25,8 +25,6 @@ Configuration is done in `~/.puppetlabs/bolt.yml` and can look like:
     ssh:
       host-key-check: false
     
-~~~PAGEBREAK~~~
-
 The inventory can be created manually or by using `bolt-inventory-pdb`.
 An example for our training environment can look like:
 

@@ -32,8 +32,6 @@ to ensure uniqueness. As a simple string the _title_ is put in single quotes. Th
 A list of attribute value pairs follows next, always indented by two whitespaces (by style guide) and separated by an
 arrow (which should be aligned by style guide). 
 
-~~~PAGEBREAK~~~
-
 There is no particular order required, but if an attribute _ensure_
 exists it should be the first, so a reader can easily recognize if a resource is created or removed. The value of the 
 attribute should be quoted in single quotes if it is a simple string or in doublequotes if it includes a variable. No

@@ -33,8 +33,6 @@ to define your own resource which can be declared multiple times. This helps
 to save time and lines of code, abstract complexity and reduce errors and
 inconsistency.
 
-~~~PAGEBREAK~~~
-
 It is very important two keep in mind that all resources declared in defined
 resources still have to be unique. For this Puppet provides an internal
 variable $title providing the title of a resource which should be used on every
@@ -67,11 +65,10 @@ Also for autoloading defined resources are placed in the same way like classes.
  }
  </pre>
 
+
 ~~~SECTION:handouts~~~
 
 ****
-
-~~~PAGEBREAK~~~
 
 You can simply declare a defined resource using the same syntax like for all other
 resources. One common use case is providing a hash of resources and perhaps an additional

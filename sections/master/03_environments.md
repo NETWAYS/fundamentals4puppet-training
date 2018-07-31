@@ -17,13 +17,13 @@
 Puppet Master can handle multiple environments to separate agents and
 serve them different versions of the Puppet code.
 
+~~~PAGEBREAK~~~
+
 With Puppet 3.7 so called Directory enviroments were added which are now
 the only supported option. This means only the environment path is set
 on the master and simply every directory in this path represents an
 environment. This directory contains a main mainfest and modules and allows
 some addition configuration.
-
-~~~PAGEBREAK~~~
 
 An environment is assigned to a node in its local configuration. Although if
 the agent requests a specific environment when the server is configured to

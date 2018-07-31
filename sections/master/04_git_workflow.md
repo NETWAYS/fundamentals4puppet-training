@@ -22,8 +22,6 @@ deploying them in production. Best is to use some kind of staging which could
 mean using well-established stages also for your puppet environment or creating
 new ones only for puppet. This stages can be represented by separate environments.
 
-~~~PAGEBREAK~~~
-
 It is recommended to use a version control system to help with this. It will
 also allow you to view the history of changes with the possiblity to revert
 specific problematic changes and define a changeset which should move to the
@@ -73,8 +71,6 @@ only on the content but also on commit history.
 ~~~SECTION:handouts~~~
 
 ****
-
-~~~PAGEBREAK~~~
 
 Git enables you to do many different things with your version control system, but
 for your basic workflow you will require a small set of commands and others just
@@ -187,8 +183,6 @@ using git.
     $ ln -s /home/git/puppet-validation-hooks/pre-receive /home/git/puppet.git/hooks/pre-receive
     $ vi /home/git/puppet-validation-hooks/commit_hooks/config.cfg
     CHECK_PUPPET_LINT="permissive"
-
-~~~PAGEBREAK~~~
 
     $ git clone https://github.com/adrienthebo/puppet-git-hooks.git puppet-deployment-hooks
     $ ln -s /home/git/puppet-deployment-hooks/post-receive/dynamic-environments /home/git/puppet.git/hooks/post-receive

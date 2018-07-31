@@ -19,6 +19,7 @@
 
 <center><img src="./_images/resource_abstraction_layer.png" style="width:480px;height:315px;" alt="Resource Abstraction Layer"></center>
 
+
 ~~~SECTION:handouts~~~
 
 ****
@@ -28,8 +29,6 @@ Similar resources are grouped into resource types which than have different prov
 
 So the type is the interface that is used to describe how a resource is configured. For example which
 mode a file should have.
-
-~~~PAGEBREAK~~~
 
 The provider is the implementation layer which translates the specified resource into actual implementation.
 They are typically operating system and tool specific. In addition to adjust the configuration they also
@@ -58,6 +57,7 @@ determinated by Puppet or could explicitly be set by the user to use the best ma
     holdable install_options installable package_settings purgeable reinstallable
     uninstall_options uninstallable upgradeable versionable virtual_packages
     </pre>
+
 
 ~~~SECTION:handouts~~~
 

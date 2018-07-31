@@ -25,8 +25,6 @@ in most setups this is Apache with Passenger. This scales very well both vertica
 horizontally. Build this setup without compiling components on your on got complicated with
 the all-in-one packages provided by the vendor.
 
-~~~PAGEBREAK~~~
-
 The vendors recommendation is to use the newest incarnation the Puppet server which executes
 the code as jRuby in a JVM. This is typically the fastest approach for running Ruby code.
 This results in higher resource requirements using Java but should scale even better than

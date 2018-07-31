@@ -54,12 +54,12 @@ Running Puppet in master mode is supported on most Linux distributions.
 
 ****
 
+~~~PAGEBREAK~~~
+
 The Puppet agent runs as service on all managed nodes and requests periodically the desired configuration
 state from the Puppet master for this it sends information about itself so called facts to the master so it
 can determine the configuration state. The retrieved configuration state as a catalog is then enforced.
 Configuration changes and metrics are then reported back to the master.
-
-~~~PAGEBREAK~~~
 
 The agent is supported on most Linux distributions, Windows, Solaris, HP-UX, AIX, Mac OS X and some Network
 devices.

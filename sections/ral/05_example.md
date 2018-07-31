@@ -21,8 +21,6 @@
 Managing a user without Puppet means managing the existence of the user and its attributes,
 managing groups required for group membership and existence and permissions of the home directory.
 
-~~~PAGEBREAK~~~
-
 This task is quite simple but requires to know which tools you will reliable find on your systems.
 Some distributions install *useradd*, others *adduser* for creating a user. Then you have to know
 the options to provide, e.g. what was the difference of *-g* and *-G*, which can get more complicated
@@ -55,6 +53,7 @@ multiple platforms it increases complexity and limits options.
      managehome => true,
    }
    </pre>
+
 
 ~~~SECTION:handouts~~~
 

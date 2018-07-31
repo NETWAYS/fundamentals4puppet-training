@@ -31,8 +31,6 @@ regular expression matching (avoid multiple matching regex because puppet will n
 is used), if not regex is found it will start choping domain parts from the fqdn and if also this
 does not provide a match the default node will be used.
 
-~~~PAGEBREAK~~~
-
 Typically you will not want to assign configuration to the default node and instead print a message
 showing nodes not properly configured. If you want to configure multiple identic nodes you can provide
 them also as comma separated list instead of regular expression. This configuration is done in the
@@ -131,6 +129,8 @@ Pushing the node declaration is required to use it.
 An alternative to the file based configuration would be an External Node Classifier.
 This is not mutually exclusive instead both sources of configuration will be merged,
 but normally you will only use one.
+
+~~~PAGEBREAK~~~
 
 The ENC is configured in the master section of the configuration file and can be any
 script providing a node declaration in yaml format. Using simple script logic to

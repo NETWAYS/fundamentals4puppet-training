@@ -9,6 +9,7 @@
  * Set it to also manage your home directory
  * Apply the manifest
 
+
 ~~~SECTION:handouts~~~
 
 ****
@@ -210,6 +211,7 @@ To verify the user's group membership you can use "id".
  * Generate a ssh key on your laptop
  * Add a ssh_authorized_key resource to distribute your public key
  * Apply the manifest
+
 
 ~~~SECTION:handouts~~~
 

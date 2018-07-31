@@ -25,6 +25,7 @@
  * Default Repository - more stable version - provided by distribution
 * Puppet Enterprise similar to Puppet Collection
 
+
 ~~~SECTION:handouts~~~
 
 ****
@@ -39,8 +40,6 @@ from the one included in your operating system when dealing with the system secu
 The same goes for Puppet Collection for Puppet 4 and Puppet Enterprise which is very similar but requires a subscription
 and in exchange provides support the vendor.
 
-~~~PAGEBREAK~~~
-
 Puppet 4 is only included in the default repository by Fedora for now, all other distributions still include Puppet 3.
 
 If the version of Puppet 3 included in your preferred distribution is older than the one you are required to run you
@@ -52,6 +51,7 @@ for the all-in-one packaging format! For your environment decide on your own whi
 is required for your tool stack and which best suits your needs.
 
 ~~~ENDSECTION~~~
+
 
 !SLIDE smbullets small
 # Puppet Enterprise
@@ -67,6 +67,7 @@ is required for your tool stack and which best suits your needs.
 * Automated Provisioning for some platforms
 * Vendor support and service
 
+
 ~~~SECTION:handouts~~~
 
 ****
@@ -78,7 +79,6 @@ on AIX is difficult where Puppet Enterprise provides their complete toolstack fo
 fashion. Also Puppet Enterprise Console adds an Webinterface for assigning configuration and view reports, but there are
 alternate frontend like Puppet Explorer or Foreman. 
 
-~~~PAGEBREAK~~~
 
 For the additional components not always is an alternative available but some
 can be build from the same components used in Puppet Enterprise and none of it is required. Puppet Support also includes
@@ -91,6 +91,7 @@ At the end it is your choice if you want to use Puppet Enterprise and can take s
 if you use the Open Source version and add components you require and perhaps buy a support contract from a third party.
 
 ~~~ENDSECTION~~~
+
 
 !SLIDE smbullets small
 # Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: Installation

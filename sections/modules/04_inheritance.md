@@ -23,6 +23,8 @@
    }
    </pre>
 
+~~~PAGEBREAK~~~
+
 ~~~SECTION:handouts~~~
 
 ****
@@ -30,8 +32,6 @@
 In Puppet inheritance between classes is possible which allows to build special-case classes
 extending a base class. This child classes inherit parameters, variables and resources and
 can extend the class, override and append existing values.
-
-~~~PAGEBREAK~~~
 
 This example show a class "base::freebsd" inheriting from "base::unix" and overwriting the
 group attribute for some file resources using the reference on the already declared ones.
@@ -55,6 +55,8 @@ not manage this attribute if declaring the child class.
       }
     }
 
+~~~PAGEBREAK~~~
+
 Extending an attributes value list works for arrays and hashes and can be quite useful for
 extended depenencies. It uses a special `+>` instead of `->`.
 
@@ -63,8 +65,6 @@ extended depenencies. It uses a special `+>` instead of `->`.
         require +> [ File['apache.pem'], File['httpd local.conf'] ],
       }
     }
-
-~~~PAGEBREAK~~~
 
 Internally inheritance works by declaring the parent class first and allowing the child class
 to override values. This can get complicated especially with the scope of variables, also
@@ -105,9 +105,9 @@ the most cases by using `include` or `contain` and some class parameters.
 
 ****
 
-The params.pp pattern is the only style guide conform use of inheritance.
-
 ~~~PAGEBREAK~~~
+
+The params.pp pattern is the only style guide conform use of inheritance.
 
 Its purpose is to seperate calculating default parameter from the actual code for configuration.
 In a subclass params of the module is all the parameter calculation handled and the main class

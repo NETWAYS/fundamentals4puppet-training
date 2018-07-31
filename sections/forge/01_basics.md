@@ -21,6 +21,7 @@ http://forge.puppet.com
 
 ~~~ENDSECTION~~~
 
+
 ~~~SECTION:handouts~~~
 
 ****
@@ -33,8 +34,6 @@ matrix is given, partner to indicate the same level of quality but support provi
 which pass specific quality and usability requirements and are recommended but not supported. Other indicators
 are the number of downloads, the scoring system combining user scores and automatic tests and if provided the
 number of open issues.
-
-~~~PAGEBREAK~~~
 
 The Forge is also usable through a Command Line Interface which allows to search, install (including dependencies)
 and also list all installed modules, but of course requires internet access.
@@ -130,8 +129,6 @@ problems and support different platforms. If you require changes try to incorpor
 breaking and push them upstream like adding another platform. If you can not or do not want to
 bring changes upstream try to only wrap aroung the module with a custom module. Both ways you keep
 the module upgradable so you do not have to maintain it on your own after installation.
-
-~~~PAGEBREAK~~~
 
 Most forge modules support multiple platforms and many different scenarios, many are over-engineered
 for one specific environment or in a style you do not like but can still be used as inspiration.

@@ -1,22 +1,23 @@
 {
   "name": "Fundamentals for Puppet",
-  "location": "Nuremberg",
+  "subtitle": "Nuremberg",
   "author": "Lennart Betz",
-  "release": "1.1",
+  "release": "2.0.0",
 
-  "favicon": "image/global/favicon.ico",
+  "favicon": "global/favicon.ico",
 
   "protected": ["presenter", "onepage", "print"],
   "user": "netways",
   "password": "awesome",
 
   "templates" : {
-       "default"   : "global/templates/default.tpl"
+       "default"   : "global/layouts/netways.tpl"
   },
 
   "sections": [
-   {"section":"global/Pre/Title"},
-   {"section":"global/Pre/Training"},
+   {"section": "global/pre/netways/title"},
+   {"section": "global/pre/netways/about"},
+   {"section": "global/pre/hints"},
 
    {"section":"sections/training"},
 
@@ -29,7 +30,7 @@
    {"section":"sections/forge"},
    {"section":"sections/optional"},
 
-   {"section":"global/Post"}
+   {"section":"global/post"}
 
   ]
 }

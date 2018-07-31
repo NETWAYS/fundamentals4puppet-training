@@ -30,8 +30,6 @@ of code.
 The example above shows the `each` function taking every element of the "binaries" array as String and
 creating a symlink for them.
 
-~~~PAGEBREAK~~~
-
 Other examples you can find on the iteration page in the docs: https://docs.puppet.com/puppet/latest/reference/lang_iteration.html
 
 or on the function reference for a specific function: https://docs.puppet.com/puppet/latest/reference/function.html

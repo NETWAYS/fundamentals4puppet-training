@@ -34,6 +34,7 @@ Build configuration from small components
 1. Assign configuration modules to nodes
 1. Reusable and composable configuration
 
+
 ~~~SECTION:handouts~~~
 
 ****

@@ -21,8 +21,6 @@ including the title. In variable names only uppercase and lowercase letters, num
 The names have to start with lowercase letter or underscore indicating internal use only. Also the style guide
 does not allow uppercase letters for inconsistency in style.
 
-~~~PAGEBREAK~~~
-
 They have to be defined before using them and this definition depends on the scope also Puppet 4 introduced
 an optional data type system for some specific use cases. In older versions all data types were simply handled
 internally and converted automatically if possible. More on scope and data types on the next pages.
@@ -49,8 +47,6 @@ reassign values.
 
 The picture above shows the different scopes. For all except the Top Scope we will learn the required
 definition later. In our simply manifest only Top Scope is available for now.
-
-~~~PAGEBREAK~~~
 
 The **Top Scope** contains all variables and defaults declared outside of class, type or node definitions.
 Those are available everywhere.
@@ -119,8 +115,6 @@ In older versions all data types were simply handled internally and converted au
 if you do not specify a data type for a variable in Puppet 4 it will still use this behaviour. These data
 types can only be used parameter lists, match expressions, case statements and selector expressions and **not**
 for variables.
-
-~~~PAGEBREAK~~~
 
 There are the typical simple data types like Strings, Numbers, Booleans, Arrays and Hashes and others are more
 specific to Puppet. In addition there are abstract data types which can be used to enforce a more specfic

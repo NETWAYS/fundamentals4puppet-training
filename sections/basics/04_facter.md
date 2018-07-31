@@ -27,11 +27,10 @@
    virtual => kvm
    </pre>
 
+
 ~~~SECTION:handouts~~~
 
 ****
-
-~~~PAGEBREAK~~~
 
 Facter returns key value pairs named facts. In older versions these were simple string representations, newer versions
 also structured facts are possible which means a array or hash is returned.
