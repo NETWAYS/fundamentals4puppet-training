@@ -1,4 +1,2 @@
 !SLIDE subsection
-
-# ~~~SECTION:MAJOR~~~ Resource Abstraction Layer
-
+# ~~~SECTION:MAJOR~~~ Resource Abstraction 
