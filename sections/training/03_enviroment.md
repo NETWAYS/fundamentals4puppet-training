@@ -1,25 +1,15 @@
 !SLIDE smbullets small noprint
-
 # Training Environment
 
 <div style="text-align: center"><img src="./_images/training_environment.png" style="float: left; width: 800px; height: 375px;" alt="Training Environment"></div>
 
-~~~SECTION:notes~~~
-
-
-
-~~~ENDSECTION~~~
-
 
 !SLIDE smbullets small printonly
-
 # Training Environment
 
-<img src="./_images/training_environment.png" style="width: 450px; height: 211px;" alt="Training Environment">
-
+<center><img src="./_images/training_environment.png" style="width:460px;height:224px;" alt="Training Environment"/></center>
 
 ~~~SECTION:handouts~~~
-
 ****
 
 The laptop provided for the training is running CentOS 7 with Gnome 3 in Fallback mode.

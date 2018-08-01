@@ -23,11 +23,10 @@
    }
    </pre>
 
-~~~PAGEBREAK~~~
-
 ~~~SECTION:handouts~~~
-
 ****
+
+~~~PAGEBREAK~~~
 
 In Puppet inheritance between classes is possible which allows to build special-case classes
 extending a base class. This child classes inherit parameters, variables and resources and

@@ -11,9 +11,7 @@
  * Profile - site specific implementation
  * Role - business logic
 
-
 ~~~SECTION:handouts~~~
-
 ****
 
 The Roles-Profile-Pattern is a design pattern that takes the Puppet approach to the next level.
@@ -56,10 +54,9 @@ an example.
 !SLIDE smbullets small printonly
 # Roles-Profiles-Pattern - Component Modules
 
-<img src="./_images/rolesprofilespattern_component.png" style="width: 480px; height: 115px;" alt="Roles-Profiles-Pattern - Component Modules">
+<center><img src="./_images/rolesprofilespattern_component.png" style="width:460px;height:111px;" alt="Roles-Profiles-Pattern - Component Modules"></center>
 
 ~~~SECTION:handouts~~~
-
 ****
 
 The picture above show some typical component modules which should have a parameterized default class,
@@ -91,6 +88,7 @@ For example: *Apache*
 
 ~~~ENDSECTION~~~
 
+
 !SLIDE smbullets small noprint
 # Roles-Profiles-Pattern - Profiles
 
@@ -106,14 +104,13 @@ For example: *Apache*
        }
 </pre>
 
-!SLIDE smbullets small printonly
+
+!SLIDE printonly
 # Roles-Profiles-Pattern - Profiles
 
-<img src="./_images/rolesprofilespattern_profiles.png" style="width: 480px; height: 169px;" alt="Roles-Profiles-Pattern - Profiles">
-
+<center><img src="./_images/rolesprofilespattern_profiles.png" style="width:460px;height:163px;" alt="Roles-Profiles-Pattern - Profiles"></center>
 
 ~~~SECTION:handouts~~~
-
 ****
 
 Above you can see profiles that will build upon the component modules. They define and retrieve application data, declare classes
@@ -167,13 +164,13 @@ For example: *Base Profiles*
      }
 </pre>
 
-!SLIDE smbullets small printonly
+
+!SLIDE printonly
 # Roles-Profiles-Pattern - Roles
 
-<img src="./_images/rolesprofilespattern_roles.png" style="width: 480px; height: 223px;" alt="Roles-Profiles-Pattern - Roles">
+<center><img src="./_images/rolesprofilespattern_roles.png" style="width:460px;height:214px;" alt="Roles-Profiles-Pattern - Roles"></center>
 
 ~~~SECTION:handouts~~~
-
 ****
 
 Above you can see one typically role consisting of profiles without any logic to be declared on a node.
@@ -207,13 +204,13 @@ Best combined with an External Node Classifier and Hiera for even more simplific
 * Profile creation requires more internal know-how than about application
 * Component modules require application know-how not internal
 
+
 !SLIDE smbullets small printonly
 # Roles-Profiles-Pattern - Stack
 
-<img src="./_images/rolesprofilespattern_stack.png" style="width: 480px; height: 223px;" alt="Roles-Profiles-Pattern - Stack">
+<center><img src="./_images/rolesprofilespattern_stack.png" style="width:460px;height:148px;" alt="Roles-Profiles-Pattern - Stack"></center>
 
 ~~~SECTION:handouts~~~
-
 ****
 
 The Roles-Profiles-Pattern is best combined with an External Node Classifier and Hiera for even more simplification.

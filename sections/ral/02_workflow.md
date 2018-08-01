@@ -3,13 +3,13 @@
 
 <center><img src="./_images/puppet_workflow.png" style="width:516px;height:456px;" alt="Workflow"/></center>
 
+
 !SLIDE smbullets small printonly
 # Puppet Workflow
 
-<center><img src="./_images/puppet_workflow.png" style="width:470px;height:418px;" alt="Workflow"/></center>
+<center><img src="./_images/puppet_workflow.png" style="width:460px;height:385px;" alt="Workflow"/></center>
 
 ~~~SECTION:handouts~~~
-
 ****
 
 ~~~PAGEBREAK~~~
@@ -25,4 +25,3 @@ actions back to the master.
 All this communication is secured by x.509 certificates and requires client authentication.
 
 ~~~ENDSECTION~~~
-

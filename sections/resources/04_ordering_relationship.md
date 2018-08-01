@@ -26,14 +26,13 @@ explicitly.
 
 <img src="./_images/implicit_dependencies.png" style="float: center; margin-left: 50px; width: 800px; height: 492px;" alt="Implicit Dependencies">
 
+
 !SLIDE smbullets small printonly
 # Implicit Dependencies
 
-<center><img src="./_images/implicit_dependencies.png" style="width: 480px; height: 295px;" alt="Implicit Dependencies"></center>
-
+<center><img src="./_images/implicit_dependencies.png" style="width:460px;height:284px;" alt="Implicit Dependencies"></center>
 
 ~~~SECTION:handouts~~~
-
 ****
 
 The picture above shows an overview of the most important implicit dependencies.
@@ -53,14 +52,13 @@ https://docs.puppet.com/puppet/latest/reference/type.html
 
 <img src="./_images/implicit_dependencies_user.png" style="float: center; margin-left: 50px; width: 800px; height: 448px;" alt="Implicit Dependencies - User">
 
+
 !SLIDE smbullets small printonly
 # Implicit Dependencies - User
 
-<center><img src="./_images/implicit_dependencies_user.png" style="width: 480px; height: 269px;" alt="Implicit Dependencies - User"></center>
-
+<center><img src="./_images/implicit_dependencies_user.png" style="width:460px;height:258px;" alt="Implicit Dependencies - User"></center>
 
 ~~~SECTION:handouts~~~
-
 ****
 
 In this case the order of the resources will be group before user before the other resources in order of writing.
@@ -76,14 +74,13 @@ on their configured user.
 
 <img src="./_images/implicit_dependencies_exec.png" style="float: center; margin-left: 50px; width: 800px; height: 419px;" alt="Implicit Dependencies - Exec">
 
+
 !SLIDE smbullets small printonly
 # Implicit Dependencies - Exec
 
-<center><img src="./_images/implicit_dependencies_exec.png" style="width: 480px; height: 251px;" alt="Implicit Dependencies - Exec"></center>
-
+<center><img src="./_images/implicit_dependencies_exec.png" style="width:460px;height:241px;" alt="Implicit Dependencies - Exec"></center>
 
 ~~~SECTION:handouts~~~
-
 ****
 
 The exec resource will autorequire a file if it is the command to be executed, the directory if it should be used
@@ -104,15 +101,11 @@ as working directory, the user and group which are used to execute the command.
  * *subscribe* - if reference is changed refresh this resource
  * *notify* - if this resource is changed refresh the reference
 
-
 ~~~SECTION:handouts~~~
-
 ****
 
 Explicit Dependencies can be defined in four different ways by adding the corresponding metaparameter.
-This metaparameter attributes exist for all resources.
-
-Syntax examples will be shown on the next pages.
+This metaparameter attributes exist for all resources. Syntax examples will be shown on the next pages.
 
 ~~~ENDSECTION~~~
 
@@ -122,14 +115,13 @@ Syntax examples will be shown on the next pages.
 
 <img src="./_images/explicit_dependencies_ordering.png" style="float: center; margin-left: 50px; width: 800px; height: 300px;" alt="Explicit Dependencies - Ordering">
 
+
 !SLIDE smbullets small printonly
 # Explicit Dependencies - Ordering
 
-<center><img src="./_images/explicit_dependencies_ordering.png" style="width: 450px; height: 169px;" alt="Explicit Dependencies - Ordering"></center>
-
+<center><img src="./_images/explicit_dependencies_ordering.png" style="width:450px;height:170px;" alt="Explicit Dependencies - Ordering"></center>
 
 ~~~SECTION:handouts~~~
-
 ****
 
 In the picture above the underlined parameters show the dependency which will in both cases result
@@ -143,14 +135,13 @@ in a installation of the package "openssh-server" before deploying the configura
 
 <img src="./_images/explicit_dependencies_refresh.png" style="float: center; margin-left: 50px; width: 800px; height: 300px;" alt="Explicit Dependencies - Refresh">
 
+
 !SLIDE smbullets small printonly
 # Explicit Dependencies - Refresh
 
-<center><img src="./_images/explicit_dependencies_refresh.png" style="width: 450px; height: 169px;" alt="Explicit Dependencies - Refresh"></center>
-
+<center><img src="./_images/explicit_dependencies_refresh.png" style="width:450px;height:165px;" alt="Explicit Dependencies - Refresh"></center>
 
 ~~~SECTION:handouts~~~
-
 ****
 
 In case of the example above the underlined parameters will trigger a refresh event on the service "sshd"
@@ -172,7 +163,6 @@ Service['sshd']
 </pre>
 
 ~~~SECTION:handouts~~~
-
 ****
 
 Another new syntax was introduced in the example for dependencies: the reference of a resource.
@@ -196,9 +186,7 @@ The syntax schema is the resource type as uppercase and the title in square brac
  * *subscribe*: File['sshd_config'] **<~** Service['sshd']
 * For readability use *before* (**->**) and *notify* (**~>**)!
 
-
 ~~~SECTION:handouts~~~
-
 ****
 
 The chaining arrow syntax is an alternative syntax for explicit dependencies which works great
@@ -227,9 +215,7 @@ and stick to those pointing left to right.
  * Apply the manifest
  * Add the "ServerName" to the `local.conf` file and apply again to see the service being restarted
 
-
 ~~~SECTION:handouts~~~
-
 ****
 
 ~~~PAGEBREAK~~~
@@ -239,6 +225,7 @@ they are typically grouped in a separate class and dependencies are enforced on 
 later after introducing the concept of classes.
 
 ~~~ENDSECTION~~~
+
 
 !SLIDE supplemental exercises
 # Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: Package-File-Service Pattern
