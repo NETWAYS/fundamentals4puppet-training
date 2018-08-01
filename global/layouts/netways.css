@@ -76,7 +76,7 @@
  ************************************************/
 
 .net-header img {
-  margin-right: 0;
+  margin-right: 1.5em;
 }
 
 .content .net-header + h1:not(.section-title) {
