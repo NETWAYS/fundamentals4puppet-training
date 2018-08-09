@@ -1,4 +1,4 @@
-!SLIDE smbullets small
+!SLIDE
 # Puppet's model based approach
 
 Describe the desired state and let Puppet enforce it
@@ -25,7 +25,7 @@ Describe the desired state and let Puppet enforce it
 ~~~ENDSECTION~~~
 
 
-!SLIDE smbullets small
+!SLIDE
 # Puppet's composable configuration
 
 Build configuration from small components
