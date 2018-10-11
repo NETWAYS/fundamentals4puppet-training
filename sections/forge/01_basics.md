@@ -4,7 +4,7 @@
 http://forge.puppet.com
 
 * Community platform for modules
- * 4000+ Modules by many different authors
+ * Thousands of modules by many different authors
  * Searchable
  * Supported, Partner supported and Approved Modules
  * Number of Downloads and Scoring system

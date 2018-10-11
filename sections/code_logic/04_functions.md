@@ -99,7 +99,7 @@ will result in a non printed line.
 * Objective:
  * Move your vhost configuration to an erb template
 * Steps:
- * Create a erb template for your vhost
+ * Create an erb template for your vhost
  * Change the resource to use the template instead of a static file
 
 
@@ -116,7 +116,7 @@ will result in a non printed line.
 
 ****
 
-* Create a erb template for your vhost by copying your static file and replace the values with erb
+* Create an erb template for your vhost by copying your static file and replace the values with erb
 
 For syntax checking on erb templates you can use `erb -P -x -T '-' template.erb | ruby -c`.
 
@@ -136,7 +136,7 @@ Your manifest still works the same ways but can handle multiple vhost with just 
 
 ****
 
-### Create a erb template for your vhost by copying your static file and replace the values with erb
+### Create an erb template for your vhost by copying your static file and replace the values with erb
 
 The file extension .erb is not required but it enables syntax checking on templates based on it.
 
@@ -197,7 +197,7 @@ use them in the same ways like in your manifests.
 * Objective:
  * Create your webserver content from an epp template
 * Steps:
- * Create a epp template to represent your webserver content
+ * Create an epp template to represent your webserver content
  * Change the resource to use the template instead of fixed string
 
 
@@ -214,7 +214,7 @@ use them in the same ways like in your manifests.
 
 ****
 
-* Create a epp template to represent your webserver content
+* Create an epp template to represent your webserver content
 
 For syntax checking on epp templates you can use `cat template.epp | puppet epp validate`.
 
@@ -234,7 +234,7 @@ Webserver serves your expected content.
 
 ****
 
-### Create a epp template to represent your webserver content
+### Create an epp template to represent your webserver content
 
 In this example both parameters get a default value for being optional. The greeting message must be a string
 and falls back to "Hello World". The parameter from is per default undefined and can be this value or a string.

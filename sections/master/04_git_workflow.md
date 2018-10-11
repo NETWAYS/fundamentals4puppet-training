@@ -84,10 +84,10 @@ enable advanced workflow and error handling.
 * Objective:
  * Bring your puppet code under version control
 * Steps:
- * Use git status to find pending changes
- * Add them with git add to the staging area
- * Create your initial commit
- * Push it to the Puppet Master
+ * Use `git status` to find pending changes
+ * Add them with `git add` to the staging area
+ * Create your initial commit using `git commit`
+ * Push it to the Puppet Master with `git push`
 
 
 !SLIDE supplemental exercises

@@ -114,9 +114,9 @@ Pushing the node declaration is required to use it.
 
 
 !SLIDE smbullets small
-# ENC
+# External Node Classifier
 
-* External Node Classifier is an alternative to site.pp
+* External Node Classifier (ENC) is an alternative to site.pp
 * Script providing a node declaration in yaml format
  * Simple script logic
  * Query configuration management database
