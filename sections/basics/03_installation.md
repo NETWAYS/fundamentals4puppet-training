@@ -97,12 +97,12 @@ if you use the Open Source version and add components you require and perhaps bu
 # Lab ~~~SECTION:MAJOR~~~.~~~SECTION:MINOR~~~: Installation
 
 * Objective:
- * Install package `puppet-agent` in the same version as the master runs.
+ * Install package `puppet-agent` in the same version as the master runs
 * Steps:
- * Make Puppet Collection available.
- * Inspect what version is installed on your master.
- * Install puppet-agent in the inspected version.
- * Extend the secure path variable to include the puppet command.
+ * Make Puppet Collection available
+ * Inspect what version is installed on your master
+ * Install puppet-agent in the inspected version
+ * Extend the secure path variable to include the puppet command
 
 
 !SLIDE supplemental exercises
@@ -123,7 +123,6 @@ if you use the Open Source version and add components you require and perhaps bu
 URL: http://yum.puppet.com/puppet5/puppet5-release-el-7.noarch.rpm
 
 * Inspect what version is installed on your master
-
 * Install puppet-agent using yum
 * Extend the secure path variable to include the puppet command
 
