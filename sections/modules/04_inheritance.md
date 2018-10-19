@@ -86,22 +86,21 @@ the most cases by using `include` or `contain` and some class parameters.
    class apache::params {
      case $::osfamily {
        'RedHat': {
-          $hhtpd_user    = 'apache'
+          $httpd_user    = 'apache'
        }
        'Debian': {
-          $hhtpd_user    = 'www-data'
+          $httpd_user    = 'www-data'
        }
      }
    }<br>
    class apache (
-     $http_user = $apache::params::user,
+     $httpd_user = $apache::params::httpd_user,
    ) inherits apache::params {
      ...
    }
    </pre>
 
 ~~~SECTION:handouts~~~
-
 ****
 
 ~~~PAGEBREAK~~~
