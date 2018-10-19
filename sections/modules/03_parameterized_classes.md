@@ -166,11 +166,11 @@ Creating a smoke test allows you to validate your parameterized class.
       ensure => stopped,
     }
 
-    $ sudo puppet apply --modulepath ~/puppet/modules/ ~/puppet/modules/apache/examples/init_stopped.pp
+    $ sudo puppet apply --modulepath /home/training/puppet/modules/ ~/puppet/modules/apache/examples/init_stopped.pp
 
     $ vim ~/puppet/modules/apache/examples/init_ssl.pp 
     class { 'apache':
       ssl => true,
     }
 
-    $ sudo puppet apply --modulepath ~/puppet/modules/ ~/puppet/modules/apache/examples/init_ssl.pp
+    $ sudo puppet apply --modulepath /home/training/puppet/modules/ ~/puppet/modules/apache/examples/init_ssl.pp

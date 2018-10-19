@@ -1,5 +1,5 @@
 !SLIDE smbullets small
-# Repository - RHEL / Centos / Fedora
+# Repository - RHEL / CentOS / Fedora
 
 * Puppet 5
  * All-in-one package for ease of usage - provided by Puppet

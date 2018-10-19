@@ -194,6 +194,6 @@ manifest defining it in the modules examples directory.
 
 Now you can use apply on this file but you have to provide the modulepath.
 
-    $ sudo puppet apply --debug --modulepath=~/puppet/modules/ ~/puppet/modules/apache/examples/init.pp
+    $ sudo puppet apply --debug --modulepath=/home/training/puppet/modules/ /home/training/puppet/modules/apache/examples/init.pp
     Debug: /Stage[main]/Apache/Package[httpd]/before: requires File[httpd local.conf]
     Debug: /Stage[main]/Apache/File[httpd local.conf]/notify: subscribes to Service[httpd]

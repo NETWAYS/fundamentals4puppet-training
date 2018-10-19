@@ -6,7 +6,7 @@
  * Group membership
  * Home directory 
 * Requires knowledge of:
- * Installed tool (*useradd* or *adduser*)
+ * Installed tools (*useradd* or *adduser*)
  * Options of those tools (*-g* or *-G*)
  * Creating, changing, deleting requires different tools (*useradd*, *usermod*, *userdel*)
 * Challenges for automation:
@@ -15,7 +15,6 @@
  * Multiple platforms
 
 ~~~SECTION:handouts~~~
-
 ****
 
 Managing a user without Puppet means managing the existence of the user and its attributes,

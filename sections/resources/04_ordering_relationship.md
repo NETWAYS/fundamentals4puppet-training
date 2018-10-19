@@ -211,7 +211,7 @@ and stick to those pointing left to right.
  * Ensure package "httpd" is installed
  * Manage a configuration file "/etc/httpd/conf.d/local.conf", and add "ServerAdmin info@netways.de" into it
  * Enable and start the service "httpd"
- * Add dependencies to make sure it is installed before you configure it and config changes restart the service
+ * Add dependencies to make sure it is installed before you configure it and restart the service
  * Apply the manifest
  * Add the "ServerName" to the `local.conf` file and apply again to see the service being restarted
 
@@ -243,7 +243,7 @@ later after introducing the concept of classes.
 * Ensure package "httpd" is installed
 * Manage its configuration file "/etc/httpd/conf.d/local.conf", and add "ServerAdmin info@netways.de" into it
 * Enable and start the service "httpd"
-* Add dependencies to make sure it is installed before you configure it and config changes restart the service
+* Add dependencies to make sure it is installed before you configure it and restart the service
 * Apply the manifest
 * Add the "ServerName" to the `local.conf` file and apply again to see the service being restarted
 
@@ -298,7 +298,7 @@ Add a service resource which enables and starts "httpd".
       enable    => true,
     }
 
-### Add dependencies to make sure it is installed before you configure it and config changes restart the service
+### Add dependencies to make sure it is installed before you configure it and restart the service
 
 With Puppet 4's manifest based ordering the three resource would already be applied in correct order, but no refresh
 would happen. Also understanding the code is easier if dependencies are explicitly declared.

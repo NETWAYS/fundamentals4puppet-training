@@ -99,11 +99,11 @@ The module is installed in your local module path.
 
 ### Install the module
 
-    $ puppet module install --modulepath ~/puppet/modules/ puppetlabs-stdlib
+    $ sudo puppet module install puppetlabs-stdlib --modulepath /etc/puppetlabs/code/environments/master/modules
 
 ### List all installed modules
 
-    $ puppet module list --modulepath ~/puppet/modules/
+    $ sudo puppet module list --modulepath /etc/puppetlabs/code/environments/master/modules
 
 
 !SLIDE smbullets small
@@ -118,7 +118,6 @@ The module is installed in your local module path.
  * Keep it simple
 
 ~~~SECTION:handouts~~~
-
 ****
 
 There are two ways to use the Forge for its best.

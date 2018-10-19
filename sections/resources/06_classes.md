@@ -119,7 +119,7 @@ later.
 !SLIDE smbullets
 # Declaring Classes
 
-* with `include` Funktion
+* with `include` Function
 <pre>
 include apache
 </pre>
