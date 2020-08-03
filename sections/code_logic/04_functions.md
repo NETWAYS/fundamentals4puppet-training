@@ -37,10 +37,16 @@ provide additional functions.
  * uses Embedded Ruby in templates
  * all variables in the scope are passed to the template
  * can handle multiple templates
+
+`template('file.erb')`
+
 * *epp*
  * uses Embedded Puppet in templates
  * a hash with parameter has to be passed to the template
- * only available in Puppet 4
+ * only available since Puppet 4
+
+`epp('file.epp', { 'parameter' => 'value' })`
+
 * an inline version of both functions exists
 
 ~~~SECTION:handouts~~~
